@@ -1,0 +1,44 @@
+﻿header,main,footer,h1,ul,li,div,img,a{
+	margin: 0;
+	padding: 0;
+}
+.wrapper{
+	width: 960px;
+	margin: 0 auto;
+}
+header{
+	background-color: #3A5B7C;
+}
+#head-txt{
+	color: #fff;
+	display: inline;
+}
+#main-nav{
+
+	display: inline;
+}
+#main-nav ul{
+	list-style: none;
+	float: right;
+	width: 35%;
+}
+#main-nav ul li{
+	display: inline;
+	float: left;
+	padding: 2%;
+}
+#main-nav ul li a{
+	color: #fff;
+	font-size: 20px;
+	text-decoration: none;
+}
+#main-nav:after{
+	float: none;
+	display: block;
+	content: '';
+	clear: both;
+}
+footer{
+	background-color: #252652;
+	color: #fff;
+}

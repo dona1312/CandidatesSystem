@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/LayoutStyle.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <h1 id="head-txt">ITSystem</h1>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Consultans</a></li>
+                    <li><a href="#">Candidates</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="wrapper">
+            <h1> All rights reserved! 2016</h1>
+        </div>
+    </footer>
+
+   
+</body>
+</html>
