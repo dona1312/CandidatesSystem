@@ -42,3 +42,25 @@ footer{
 	background-color: #252652;
 	color: #fff;
 }
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+.table {
+    padding: 7px;
+    width: 95%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+    th, td {
+        text-align: left;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
