@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ITSystem.Models
 {
-    public class Candidate:BaseModel
+    public class Candidate: BaseModel
     {
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
