@@ -49,6 +49,30 @@ namespace ITSystem.Migrations
                 .Index(t => t.CandidateId);
             
             CreateTable(
+                "dbo.ProgrammingLanguages",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        CandidateId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Candidates", t => t.CandidateId, cascadeDelete: true)
+                .Index(t => t.CandidateId);
+            
+            CreateTable(
+                "dbo.UsedTechnologies",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        CandidateId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Candidates", t => t.CandidateId, cascadeDelete: true)
+                .Index(t => t.CandidateId);
+            
+            CreateTable(
                 "dbo.ConsultantCandidates",
                 c => new
                     {
@@ -65,15 +89,21 @@ namespace ITSystem.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.UsedTechnologies", "CandidateId", "dbo.Candidates");
+            DropForeignKey("dbo.ProgrammingLanguages", "CandidateId", "dbo.Candidates");
             DropForeignKey("dbo.Notes", "CandidateId", "dbo.Candidates");
             DropForeignKey("dbo.Notes", "ConsultantId", "dbo.Consultants");
             DropForeignKey("dbo.ConsultantCandidates", "Candidate_Id", "dbo.Candidates");
             DropForeignKey("dbo.ConsultantCandidates", "Consultant_Id", "dbo.Consultants");
             DropIndex("dbo.ConsultantCandidates", new[] { "Candidate_Id" });
             DropIndex("dbo.ConsultantCandidates", new[] { "Consultant_Id" });
+            DropIndex("dbo.UsedTechnologies", new[] { "CandidateId" });
+            DropIndex("dbo.ProgrammingLanguages", new[] { "CandidateId" });
             DropIndex("dbo.Notes", new[] { "CandidateId" });
             DropIndex("dbo.Notes", new[] { "ConsultantId" });
             DropTable("dbo.ConsultantCandidates");
+            DropTable("dbo.UsedTechnologies");
+            DropTable("dbo.ProgrammingLanguages");
             DropTable("dbo.Notes");
             DropTable("dbo.Consultants");
             DropTable("dbo.Candidates");

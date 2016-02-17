@@ -17,6 +17,8 @@ namespace ITSystem
         public DbSet<Consultant> Consultants{get;set;}
         public DbSet<Candidate> Candidates { get; set; }
         public DbSet<Note> Notes { get; set; }
+        public DbSet<UsedTechnology> UsedTechnologies { get; set; }
+        public DbSet<ProgrammingLanguage> ProgrammingLanguages { get; set; }
 
     }
 }
