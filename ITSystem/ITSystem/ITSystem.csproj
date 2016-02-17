@@ -117,6 +117,7 @@
     <Compile Include="Repositories\NoteRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Services\AuthenthicationService.cs" />
+    <Compile Include="ViewModels\Candidates\CandidateEditVM.cs" />
     <Compile Include="ViewModels\Candidates\CandidateListVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +126,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Candidates\List.cshtml" />
+    <Content Include="Views\Candidates\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
