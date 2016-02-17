@@ -32,7 +32,10 @@ namespace ITSystem.Repositories
             }
 
         }
-
+        public T GetById(int id)
+        {
+            return dbSet.Find(id);
+        }
         public virtual void Save(T item)
         {
             if (item.Id <= 0)
