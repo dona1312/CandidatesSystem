@@ -23,6 +23,7 @@ namespace ITSystem.Controllers
             
             return View(model);
         }
+
         public ActionResult Edit(int? id)
         {
             Candidate candidate = new Candidate();
@@ -30,7 +31,6 @@ namespace ITSystem.Controllers
             {
                 candidate = unitOfWork.CandidateRepository.GetById(id.Value);
             }
-
 
             CandidateEditVM model = new CandidateEditVM();
             model.Id = candidate.Id;
@@ -43,6 +43,7 @@ namespace ITSystem.Controllers
             model.Notes = candidate.Notes;
             return View(model);
         }
+
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Edit(CandidateEditVM model)
