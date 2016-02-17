@@ -1,5 +1,6 @@
 ﻿@model ITSystem.ViewModels.Candidates.CandidateEditVM
-
+@using System.Web.Optimization
+@Styles.Render("~/Content/css")
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -55,7 +56,10 @@
             </div>
         </div>
     }
+
     <div>
         @Html.ActionLink("Back to List", "Index")
+        @Scripts.Render("~/Scripts/jquery")
+        @Scripts.Render("~/Scripts/bootstrap")
     </div>
 </div>

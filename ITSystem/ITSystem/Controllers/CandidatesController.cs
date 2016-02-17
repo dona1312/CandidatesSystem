@@ -37,6 +37,7 @@ namespace ITSystem.Controllers
             model.FirstName = candidate.FirstName;
             model.MiddleName = candidate.MiddleName;
             model.LastName = candidate.LastName;
+            model.Email = candidate.Email;
             model.ProgrammingLanguages = candidate.ProgrammingLanguages;
             model.UsedTechnologies = candidate.UsedTechnologies;
             model.Notes = candidate.Notes;
@@ -62,6 +63,7 @@ namespace ITSystem.Controllers
             candidate.FirstName = model.FirstName;
             candidate.MiddleName = model.MiddleName;
             candidate.LastName = model.LastName;
+            candidate.Email = model.Email;
             candidate.ProgrammingLanguages = model.ProgrammingLanguages;
             candidate.UsedTechnologies = model.UsedTechnologies;
             candidate.Notes = model.Notes;
