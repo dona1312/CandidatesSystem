@@ -3,7 +3,6 @@
 @Styles.Render("~/Content/css")
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="wrapper">
@@ -12,7 +11,7 @@
         @Html.AntiForgeryToken()
     
         <div class="form-horizontal">
-            <h4>CandidateEditVM</h4>
+            <h4>@ViewBag.Title</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.Id)
