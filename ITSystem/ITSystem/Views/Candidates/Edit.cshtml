@@ -50,6 +50,23 @@
             </div>
 
             <div class="form-group">
+                @Html.LabelFor(model => model.UsedTechnologies, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.UsedTechnologies[0].Name)
+                    @Html.ValidationMessageFor(model => model.UsedTechnologies, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProgrammingLanguages, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.ProgrammingLanguages[0].Name)
+                    @Html.ValidationMessageFor(model => model.UsedTechnologies, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Save" class="btn btn-default" />
                 </div>
@@ -59,7 +76,7 @@
 
     <div>
         @Html.ActionLink("Back to List", "List")
-        @Scripts.Render("~/Scripts/jquery")
-        @Scripts.Render("~/Scripts/bootstrap")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
     </div>
 </div>

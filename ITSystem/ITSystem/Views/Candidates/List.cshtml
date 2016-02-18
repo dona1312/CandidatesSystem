@@ -1,16 +1,30 @@
 ﻿@model ITSystem.ViewModels.Candidates.CandidateListVM
-
+@using System.Web.Optimization
 @{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<p>
-    @Html.ActionLink("Create New", "Edit")
-</p>
 <div class="wrapper">
+    <p>
+        @Html.ActionLink("Create New", "Edit")
+    </p>
+
+    <h3>Search by: </h3>
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Dropdown
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">by Name</a></li>
+            <li><a href="#">by Programming Language</a></li>
+            <li><a href="#">by used tehcnologies</a></li>
+        </ul>
+    </div>
+
+    <h2>All Candidates</h2>
     <table class="table">
-        <tr>
+        <tr id="table-head">
             <th>
                 @Html.DisplayNameFor(model => model.Candidates[0].FirstName)
             </th>
@@ -51,3 +65,5 @@
 
     </table>
 </div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
