@@ -37,9 +37,9 @@ namespace ITSystem.Controllers
             model.FirstName = candidate.FirstName;
             model.MiddleName = candidate.MiddleName;
             model.LastName = candidate.LastName;
+            model.UsedTechnologies = candidate.UsedTechnologies;
+            model.ProgrammingLanguages = candidate.ProgrammingLanguages;
             model.Email = candidate.Email;
-            //model.ProgrammingLanguages = candidate.ProgrammingLanguages;
-            //model.UsedTechnologies = candidate.UsedTechnologies;
             model.Notes = candidate.Notes;
             return View(model);
         }
@@ -65,13 +65,33 @@ namespace ITSystem.Controllers
             candidate.MiddleName = model.MiddleName;
             candidate.LastName = model.LastName;
             candidate.Email = model.Email;
-            //candidate.ProgrammingLanguages = model.ProgrammingLanguages;
-            //candidate.UsedTechnologies = model.UsedTechnologies;
+            candidate.ProgrammingLanguages = model.ProgrammingLanguages;
+            candidate.UsedTechnologies = model.UsedTechnologies;
             candidate.Notes = model.Notes;
 
             unitOfWork.CandidateRepository.Save(candidate);
 
             return RedirectToAction("List");
+        }
+        public ActionResult Details(int? id)
+        {
+            Candidate candidate = new Candidate();
+            if (id > 0)
+            {
+                candidate = unitOfWork.CandidateRepository.GetById(id.Value);
+            }
+
+            CandidateEditVM model = new CandidateEditVM();
+            model.Id = candidate.Id;
+            model.FirstName = candidate.FirstName;
+            model.MiddleName = candidate.MiddleName;
+            model.LastName = candidate.LastName;
+            model.Email = candidate.Email;
+            model.ProgrammingLanguages = candidate.ProgrammingLanguages;
+            model.UsedTechnologies = candidate.UsedTechnologies;
+            model.Notes = candidate.Notes;
+            return View(model);
+
         }
     }
 }

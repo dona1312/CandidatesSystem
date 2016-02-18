@@ -9,6 +9,7 @@
 }
 header{
 	background-color: #3A5B7C;
+    margin-bottom:2%;
 }
 #head-txt{
 	color: #fff;
@@ -65,3 +66,9 @@ table, caption, tbody, tfoot, thead, tr, th, td {
         padding: 10px;
         border-bottom: 1px solid #ccc;
     }
+#table-head{
+    text-align:center;
+}
+dt,dd{
+    padding:0.3%;
+}
