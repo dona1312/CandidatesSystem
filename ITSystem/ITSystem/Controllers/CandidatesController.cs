@@ -73,6 +73,7 @@ namespace ITSystem.Controllers
 
             return RedirectToAction("List");
         }
+
         public ActionResult Details(int? id)
         {
             Candidate candidate = new Candidate();
@@ -87,8 +88,8 @@ namespace ITSystem.Controllers
             model.MiddleName = candidate.MiddleName;
             model.LastName = candidate.LastName;
             model.Email = candidate.Email;
-            model.ProgrammingLanguages = candidate.ProgrammingLanguages;
-            model.UsedTechnologies = candidate.UsedTechnologies;
+            model.ProgrammingLanguages = unitOfWork.ProgrammingLanguageRepository.GetAll(p => p.CandidateId == model.Id);
+            model.UsedTechnologies = unitOfWork.UsedTechnologyRepository.GetAll(p => p.CandidateId == model.Id);
             model.Notes = candidate.Notes;
             return View(model);
 

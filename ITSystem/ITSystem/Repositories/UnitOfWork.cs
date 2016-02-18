@@ -10,6 +10,8 @@ namespace ITSystem.Repositories
         private ConsultantRepository consultantRepo;
         private CandidateRepository candidateRepo;
         private NoteRepository noteRepo;
+        private ProgrammingLanguageRepository programmingRepo;
+        private UsedTechnologyRepository techRepo;
         private ITSystemContext context;
 
         
@@ -51,6 +53,30 @@ namespace ITSystem.Repositories
                     noteRepo = new NoteRepository(context);
                 }
                 return noteRepo;
+            }
+        }
+
+        public ProgrammingLanguageRepository ProgrammingLanguageRepository
+        {
+            get
+            {
+                if (programmingRepo == null)
+                {
+                    programmingRepo = new ProgrammingLanguageRepository(context);
+                }
+                return programmingRepo;
+            }
+        }
+
+        public UsedTechnologyRepository UsedTechnologyRepository
+        {
+            get
+            {
+                if (techRepo == null)
+                {
+                    techRepo = new UsedTechnologyRepository(context);
+                }
+                return techRepo;
             }
         }
     }

@@ -2,12 +2,11 @@
 @using System.Web.Optimization
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 <div class="wrapper">
-    <h2>Details</h2>
+    <h2>@ViewBag.Title</h2>
 
     <h4>Candidate</h4>
     <hr />
@@ -47,27 +46,26 @@
             @Html.DisplayNameFor(model => model.UsedTechnologies)
         </dt>
 
-        @*<dd>
+        <dd>
             @for (int i = 0; i < Model.UsedTechnologies.Count; i++)
             {
-                @Html.DisplayFor(model => model.UsedTechnologies[i].Name);
+                <p>@Html.DisplayFor(model => model.UsedTechnologies[i].Name);</p>
             }
-        </dd>*@
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.ProgrammingLanguages)
         </dt>
-        @*<dd>
+        <dd>
             @for (int i = 0; i < Model.ProgrammingLanguages.Count; i++)
             {
-                @Html.DisplayFor(model => model.ProgrammingLanguages[i].Name);
+                <p>@Html.DisplayFor(model => model.ProgrammingLanguages[i].Name);</p>
             }
-        </dd>*@
+        </dd>
 
     </dl>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "List")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "List")
-    @Scripts.Render("~/Scripts/jquery")
-    @Scripts.Render("~/Scripts/bootstrap")
-</p>
+
