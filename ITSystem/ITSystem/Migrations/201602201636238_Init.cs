@@ -49,16 +49,30 @@ namespace ITSystem.Migrations
                 .Index(t => t.CandidateId);
             
             CreateTable(
+                "dbo.Skills",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        CandidateId = c.Int(nullable: false),
+                        UsedTechnologyId = c.Int(nullable: false),
+                        ProgrammingLanguageId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Candidates", t => t.CandidateId, cascadeDelete: true)
+                .ForeignKey("dbo.ProgrammingLanguages", t => t.ProgrammingLanguageId, cascadeDelete: true)
+                .ForeignKey("dbo.UsedTechnologies", t => t.UsedTechnologyId, cascadeDelete: true)
+                .Index(t => t.CandidateId)
+                .Index(t => t.UsedTechnologyId)
+                .Index(t => t.ProgrammingLanguageId);
+            
+            CreateTable(
                 "dbo.ProgrammingLanguages",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        CandidateId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Candidates", t => t.CandidateId, cascadeDelete: true)
-                .Index(t => t.CandidateId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.UsedTechnologies",
@@ -66,11 +80,8 @@ namespace ITSystem.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        CandidateId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Candidates", t => t.CandidateId, cascadeDelete: true)
-                .Index(t => t.CandidateId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.ConsultantCandidates",
@@ -89,21 +100,24 @@ namespace ITSystem.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.UsedTechnologies", "CandidateId", "dbo.Candidates");
-            DropForeignKey("dbo.ProgrammingLanguages", "CandidateId", "dbo.Candidates");
+            DropForeignKey("dbo.Skills", "UsedTechnologyId", "dbo.UsedTechnologies");
+            DropForeignKey("dbo.Skills", "ProgrammingLanguageId", "dbo.ProgrammingLanguages");
+            DropForeignKey("dbo.Skills", "CandidateId", "dbo.Candidates");
             DropForeignKey("dbo.Notes", "CandidateId", "dbo.Candidates");
             DropForeignKey("dbo.Notes", "ConsultantId", "dbo.Consultants");
             DropForeignKey("dbo.ConsultantCandidates", "Candidate_Id", "dbo.Candidates");
             DropForeignKey("dbo.ConsultantCandidates", "Consultant_Id", "dbo.Consultants");
             DropIndex("dbo.ConsultantCandidates", new[] { "Candidate_Id" });
             DropIndex("dbo.ConsultantCandidates", new[] { "Consultant_Id" });
-            DropIndex("dbo.UsedTechnologies", new[] { "CandidateId" });
-            DropIndex("dbo.ProgrammingLanguages", new[] { "CandidateId" });
+            DropIndex("dbo.Skills", new[] { "ProgrammingLanguageId" });
+            DropIndex("dbo.Skills", new[] { "UsedTechnologyId" });
+            DropIndex("dbo.Skills", new[] { "CandidateId" });
             DropIndex("dbo.Notes", new[] { "CandidateId" });
             DropIndex("dbo.Notes", new[] { "ConsultantId" });
             DropTable("dbo.ConsultantCandidates");
             DropTable("dbo.UsedTechnologies");
             DropTable("dbo.ProgrammingLanguages");
+            DropTable("dbo.Skills");
             DropTable("dbo.Notes");
             DropTable("dbo.Consultants");
             DropTable("dbo.Candidates");

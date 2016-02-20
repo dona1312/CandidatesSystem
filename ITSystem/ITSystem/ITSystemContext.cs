@@ -19,6 +19,7 @@ namespace ITSystem
         public DbSet<Note> Notes { get; set; }
         public DbSet<UsedTechnology> UsedTechnologies { get; set; }
         public DbSet<ProgrammingLanguage> ProgrammingLanguages { get; set; }
+        public DbSet<Skill> Skills { get; set; }
 
     }
 }
