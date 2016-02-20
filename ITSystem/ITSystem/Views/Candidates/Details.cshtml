@@ -43,24 +43,16 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.UsedTechnologies)
+            @Html.DisplayNameFor(model => model.Skills)
         </dt>
+       
         <dd>
-            @for (int i = 0; i < Model.UsedTechnologies.Count; i++)
+            @for (int i = 0; i < Model.Skills.Count; i++)
             {
-                <p>@Html.DisplayFor(model => model.UsedTechnologies[i].Name);</p>
+                <p>@Model.Skills[i].ProgrammingLanguage.Name</p>
+                <p>@Model.Skills[i].UsedTechnology.Name</p>
             }
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ProgrammingLanguages)
-        </dt>
-        <dd>
-            @for (int i = 0; i < Model.ProgrammingLanguages.Count; i++)
-            {
-                <p>@Html.DisplayFor(model => model.ProgrammingLanguages[i].Name);</p>
-            }
-        </dd>
-
     </dl>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

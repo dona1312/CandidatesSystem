@@ -37,8 +37,7 @@ namespace ITSystem.Controllers
             model.FirstName = candidate.FirstName;
             model.MiddleName = candidate.MiddleName;
             model.LastName = candidate.LastName;
-         //   model.UsedTechnologies = candidate.UsedTechnologies;
-          //  model.ProgrammingLanguages = candidate.ProgrammingLanguages;
+            model.Skills = candidate.Skills;
             model.Email = candidate.Email;
             model.Notes = candidate.Notes;
             return View(model);
@@ -65,8 +64,7 @@ namespace ITSystem.Controllers
             candidate.MiddleName = model.MiddleName;
             candidate.LastName = model.LastName;
             candidate.Email = model.Email;
-           // candidate.ProgrammingLanguages = model.ProgrammingLanguages;
-           // candidate.UsedTechnologies = model.UsedTechnologies;
+            candidate.Skills = model.Skills;
             candidate.Notes = model.Notes;
 
             unitOfWork.CandidateRepository.Save(candidate);
@@ -88,8 +86,7 @@ namespace ITSystem.Controllers
             model.MiddleName = candidate.MiddleName;
             model.LastName = candidate.LastName;
             model.Email = candidate.Email;
-           // model.ProgrammingLanguages = unitOfWork.ProgrammingLanguageRepository.GetAll(p => p.CandidateId == model.Id);
-           // model.UsedTechnologies = unitOfWork.UsedTechnologyRepository.GetAll(p => p.CandidateId == model.Id);
+            model.Skills =unitOfWork.SkillsRepository.GetAll(s=>s.CandidateId==model.Id);
             model.Notes = candidate.Notes;
             return View(model);
 
