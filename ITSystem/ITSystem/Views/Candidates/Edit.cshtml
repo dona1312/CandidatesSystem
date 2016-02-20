@@ -9,7 +9,7 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-    
+
         <div class="form-horizontal">
             <h4>@ViewBag.Title</h4>
             <hr />
@@ -51,18 +51,32 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.UsedTechnologies, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.UsedTechnologies[0].Name)
-                    @Html.ValidationMessageFor(model => model.UsedTechnologies, "", new { @class = "text-danger" })
 
+                    <table>
+                        @for (int i = 0; i < Model.UsedTechnologies.Count; i++)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(model => model.UsedTechnologies[i].Name);</td>
+                                <td>@Html.ActionLink("Add", "Add", new { id = Model.UsedTechnologies[i].Id }) | @Html.ActionLink("Delete", "Delete", new { id = Model.UsedTechnologies[i].Id })</td>
+                            </tr>
+                        }
+                    </table>
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.ProgrammingLanguages, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.ProgrammingLanguages[0].Name)
-                    @Html.ValidationMessageFor(model => model.UsedTechnologies, "", new { @class = "text-danger" })
 
+                    <table>
+                        @for (int i = 0; i < Model.ProgrammingLanguages.Count; i++)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(model => model.ProgrammingLanguages[i].Name);</td>
+                                <td>@Html.ActionLink("Add", "Add", new { id = Model.ProgrammingLanguages[i].Id }) | @Html.ActionLink("Delete", "Delete", new { id = Model.ProgrammingLanguages[i].Id })</td>
+                            </tr>
+                        }
+                    </table>
                 </div>
             </div>
             <div class="form-group">
