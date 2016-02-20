@@ -12,8 +12,8 @@ namespace ITSystem.Repositories
         private NoteRepository noteRepo;
         private ProgrammingLanguageRepository programmingRepo;
         private UsedTechnologyRepository techRepo;
+        private SkillRepository skillRepo;
         private ITSystemContext context;
-
         
         public UnitOfWork()
         {
@@ -77,6 +77,17 @@ namespace ITSystem.Repositories
                     techRepo = new UsedTechnologyRepository(context);
                 }
                 return techRepo;
+            }
+        }
+        public SkillRepository SkillsRepository
+        {
+            get
+            {
+                if (skillRepo == null)
+                {
+                    skillRepo = new SkillRepository(context);
+                }
+                return skillRepo;
             }
         }
     }

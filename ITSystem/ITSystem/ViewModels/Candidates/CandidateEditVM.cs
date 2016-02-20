@@ -13,10 +13,7 @@ namespace ITSystem.ViewModels.Candidates
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
-        [DataType(DataType.MultilineText)]
-        public List<UsedTechnology> UsedTechnologies { get; set; }
-        [DataType(DataType.MultilineText)]
-        public List<ProgrammingLanguage> ProgrammingLanguages { get; set; }
+        public List<Skill> Skills { get; set; }
         public string Email { get; set; }
         public List<Note> Notes { get; set; }
     }
