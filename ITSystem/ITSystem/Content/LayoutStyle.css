@@ -72,3 +72,6 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 dt,dd{
     padding:0.3%;
 }
+form-horizontal{
+    margin:0 auto;
+}
