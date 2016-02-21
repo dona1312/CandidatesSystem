@@ -16,7 +16,14 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li><a href="#">Consultans</a></li>
                     <li>@Html.ActionLink("Candidates" , "List", "Candidates")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                    @if (ITSystem.Services.AuthenticationService.LoggedConsultant == null)
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                    }
                 </ul>
             </nav>
         </div>
