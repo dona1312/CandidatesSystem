@@ -8,31 +8,37 @@
 	margin: 0 auto;
 }
 header{
-	background-color: #3A5B7C;
+	background-color: #0b1538;
     margin-bottom:2%;
+    padding:10px;
 }
 #head-txt{
-	color: #fff;
 	display: inline;
 }
-#main-nav{
+#head-txt a {
+    color: #f58634;
+    text-decoration:none;
+}
 
-	display: inline;
+#main-nav{
+    width: 43%;
+    float: right;
 }
 #main-nav ul{
 	list-style: none;
-	float: right;
-	width: 40%;
 }
 #main-nav ul li{
-	display: inline;
-	float: left;
+	float:left;
 	padding: 2%;
 }
 #main-nav ul li a{
 	color: #fff;
 	font-size: 20px;
 	text-decoration: none;
+}
+#main-nav ul li a:hover {
+    color: #6D9CF1;
+	transition: ease all;
 }
 #main-nav:after{
 	float: none;
@@ -41,8 +47,9 @@ header{
 	clear: both;
 }
 footer{
-	background-color: #252652;
+	background-color: #0b1538;
 	color: #fff;
+    padding: 2px;
 }
 
 table, caption, tbody, tfoot, thead, tr, th, td {
