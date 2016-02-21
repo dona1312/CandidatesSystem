@@ -7,11 +7,11 @@ using ITSystem.Repositories;
 
 namespace ITSystem.Services
 {
-    public class AuthenthicationService
+    public static class AuthenticationService
     {
-        public Consultant LoggedConsultant { get; set; }
+        public static Consultant LoggedConsultant { get; set; }
 
-        public void Authenticate(string username, string password)
+        public static void Authenticate(string username, string password)
         {
             UnitOfWork unitOfWork = new UnitOfWork();
             LoggedConsultant = unitOfWork.ConsultantRepository.GetAll(cons => cons.Username == username && cons.Password == password).FirstOrDefault();
