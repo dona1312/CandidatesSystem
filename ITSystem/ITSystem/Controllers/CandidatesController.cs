@@ -89,7 +89,20 @@ namespace ITSystem.Controllers
             model.Skills =unitOfWork.SkillsRepository.GetAll(s=>s.CandidateId==model.Id);
             model.Notes = candidate.Notes;
             return View(model);
+        }
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+                return RedirectToAction("List");
 
+
+            Candidate candidate = unitOfWork.CandidateRepository.GetById(id.Value);
+            if (candidate == null)
+            {
+                return RedirectToAction("List");
+            }
+            unitOfWork.CandidateRepository.Delete(candidate);
+            return RedirectToAction("List");
         }
     }
 }
