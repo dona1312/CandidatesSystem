@@ -40,6 +40,7 @@ namespace ITSystem.Controllers
             model.Skills = candidate.Skills;
             model.Email = candidate.Email;
             model.Notes = candidate.Notes;
+
             return View(model);
         }
 
@@ -58,7 +59,6 @@ namespace ITSystem.Controllers
             {
                 candidate = unitOfWork.CandidateRepository.GetById(model.Id);
             }
-
             candidate.Id = model.Id;
             candidate.FirstName = model.FirstName;
             candidate.MiddleName = model.MiddleName;
@@ -66,7 +66,6 @@ namespace ITSystem.Controllers
             candidate.Email = model.Email;
             candidate.Skills = model.Skills;
             candidate.Notes = model.Notes;
-
             unitOfWork.CandidateRepository.Save(candidate);
 
             return RedirectToAction("List");
@@ -79,7 +78,6 @@ namespace ITSystem.Controllers
             {
                 candidate = unitOfWork.CandidateRepository.GetById(id.Value);
             }
-
             CandidateEditVM model = new CandidateEditVM();
             model.Id = candidate.Id;
             model.FirstName = candidate.FirstName;
@@ -88,14 +86,14 @@ namespace ITSystem.Controllers
             model.Email = candidate.Email;
             model.Skills =unitOfWork.SkillsRepository.GetAll(s=>s.CandidateId==model.Id);
             model.Notes = candidate.Notes;
+
             return View(model);
         }
+
         public ActionResult Delete(int? id)
         {
             if (id == null)
                 return RedirectToAction("List");
-
-
             Candidate candidate = unitOfWork.CandidateRepository.GetById(id.Value);
             if (candidate == null)
             {
