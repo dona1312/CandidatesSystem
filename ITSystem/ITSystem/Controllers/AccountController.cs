@@ -46,5 +46,11 @@ namespace ITSystem.Controllers
                 return RedirectToAction("List", "Candidates");
             }
         }
+
+        public ActionResult Logout()
+        {
+            AuthenticationService.Logout();
+            return RedirectToAction("Login");
+        }
     }
 }
