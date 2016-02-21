@@ -16,5 +16,10 @@ namespace ITSystem.Services
             UnitOfWork unitOfWork = new UnitOfWork();
             LoggedConsultant = unitOfWork.ConsultantRepository.GetAll(cons => cons.Username == username && cons.Password == password).FirstOrDefault();
         }
+
+        public static void Logout()
+        {
+            Authenticate(null, null);
+        }
     }
 }
