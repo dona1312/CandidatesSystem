@@ -17,7 +17,7 @@ namespace ITSystem.Repositories
         
         public UnitOfWork()
         {
-            
+            this.context = new ITSystemContext();
         }
 
         public ConsultantRepository ConsultantRepository

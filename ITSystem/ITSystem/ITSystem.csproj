@@ -128,6 +128,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CandidatesController.cs" />
     <Compile Include="Enums\RankEnum.cs" />
@@ -156,7 +157,8 @@
     <Compile Include="Repositories\SkillRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Repositories\UsedTechnologyRepository.cs" />
-    <Compile Include="Services\AuthenthicationService.cs" />
+    <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="ViewModels\Account\AccountLoginVM.cs" />
     <Compile Include="ViewModels\Candidates\CandidateEditVM.cs" />
     <Compile Include="ViewModels\Candidates\CandidateListVM.cs" />
   </ItemGroup>
@@ -170,6 +172,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Candidates\Details.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

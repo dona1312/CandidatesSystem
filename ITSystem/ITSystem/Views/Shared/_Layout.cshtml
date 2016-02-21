@@ -13,9 +13,10 @@
             <h1 id="head-txt">ITSystem</h1>
             <nav id="main-nav">
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li><a href="#">Consultans</a></li>
                     <li>@Html.ActionLink("Candidates" , "List", "Candidates")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
                 </ul>
             </nav>
         </div>
@@ -28,8 +29,6 @@
             <h1> All rights reserved! 2016</h1>
         </div>
     </footer>
-
-  
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
