@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 @using System.Web.Optimization
+@using ITSystem.Enums
 @Styles.Render("~/Content/css")
 <html>
 <head>
@@ -10,19 +11,22 @@
 <body>
     <header>
         <div class="wrapper">
-            <h1 id="head-txt">ITSystem</h1>
+            <h1 id="head-txt">@Html.ActionLink("ITSystem", "Index", "Home")</h1>
             <nav id="main-nav">
                 <ul>
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li><a href="#">Consultans</a></li>
-                    <li>@Html.ActionLink("Candidates" , "List", "Candidates")</li>
-                    @if (ITSystem.Services.AuthenticationService.LoggedConsultant == null)
+                    @if (ITSystem.Services.AuthenticationService.LoggedConsultant != null)
                     {
-                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                        if (ITSystem.Services.AuthenticationService.LoggedConsultant.Rank == (RankEnum)Enum.Parse(typeof(RankEnum), RankEnum.Admin.ToString()))
+                        {
+                            <li><a href="#">Consultans</a></li>
+                        }
+                        <li>@Html.ActionLink("Candidates", "List", "Candidates")</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
                     }
                 </ul>
             </nav>
@@ -33,7 +37,7 @@
     </div>
     <footer>
         <div class="wrapper">
-            <h1> All rights reserved! 2016</h1>
+            <h3> All rights reserved &copy; 2016 </h3>
         </div>
     </footer>
 
