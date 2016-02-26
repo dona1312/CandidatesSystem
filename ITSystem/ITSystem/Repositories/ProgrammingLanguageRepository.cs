@@ -8,7 +8,6 @@ namespace ITSystem.Repositories
 {
     public class ProgrammingLanguageRepository : BaseRepository<ProgrammingLanguage>
     {
-        public ProgrammingLanguageRepository(ITSystemContext context)
-            : base(context) { }
+        public ProgrammingLanguageRepository() : base() { }
     }
 }
