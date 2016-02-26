@@ -8,12 +8,18 @@ using System.Linq.Expressions;
 
 namespace ITSystem.Repositories
 {
-    public abstract class BaseRepository<T> where T: BaseModel
+    public class BaseRepository<T> where T: BaseModel
     {
         protected readonly ITSystemContext context;
         protected readonly DbSet<T> dbSet;
 
         public BaseRepository(ITSystemContext context)
+        {
+            this.context = new ITSystemContext();
+            this.dbSet = this.context.Set<T>();
+        }
+
+        public BaseRepository()
         {
             this.context = new ITSystemContext();
             this.dbSet = this.context.Set<T>();

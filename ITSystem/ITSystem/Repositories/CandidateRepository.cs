@@ -10,5 +10,7 @@ namespace ITSystem.Repositories
     {
         public CandidateRepository(ITSystemContext context)
             : base(context) { }
+
+        public CandidateRepository() : base() { }
     }
 }

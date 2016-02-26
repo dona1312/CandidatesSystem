@@ -5,19 +5,19 @@ using System.Web;
 using System.Web.Mvc;
 using ITSystem.ViewModels;
 using ITSystem.ViewModels.Candidates;
-using ITSystem.Repositories;
+using ITSystem.Services.ModelServices;
 using ITSystem.Models;
 
 namespace ITSystem.Controllers
 {
     public class CandidatesController : Controller
     {
-        UnitOfWork unitOfWork = new UnitOfWork();
+        CandidatesService candidatesService = new CandidatesService();
 
         public ActionResult List()
         {
             CandidateListVM model = new CandidateListVM();
-            model.Candidates = unitOfWork.CandidateRepository.GetAll();
+            model.Candidates = candidatesService.GetAll();
             return View(model);
         }
 
@@ -32,7 +32,7 @@ namespace ITSystem.Controllers
             }
             else
             {
-                candidate = unitOfWork.CandidateRepository.GetById(id.Value);
+                candidate = candidatesService.GetById(id.Value);
                 if (candidate == null)
                 {
                     return RedirectToAction("List");
@@ -70,7 +70,7 @@ namespace ITSystem.Controllers
             }
             else
             {
-                candidate = unitOfWork.CandidateRepository.GetById(model.Id);
+                candidate = candidatesService.GetById(model.Id);
                 if (candidate == null)
                 {
                     return RedirectToAction("List");
@@ -85,7 +85,7 @@ namespace ITSystem.Controllers
             candidate.Skills = model.Skills;
             candidate.Notes = model.Notes;
 
-            unitOfWork.CandidateRepository.Save(candidate);
+            candidatesService.Save(candidate);
             return RedirectToAction("List");
         }
 
@@ -100,7 +100,7 @@ namespace ITSystem.Controllers
             }
             else
             {
-                candidate = unitOfWork.CandidateRepository.GetById(id.Value);
+                candidate = candidatesService.GetById(id.Value);
                 if (candidate == null)
                 {
                     return RedirectToAction("List");
@@ -112,7 +112,7 @@ namespace ITSystem.Controllers
             model.MiddleName = candidate.MiddleName;
             model.LastName = candidate.LastName;
             model.Email = candidate.Email;
-            model.Skills = unitOfWork.SkillsRepository.GetAll(s => s.CandidateId == model.Id);
+            model.Skills = candidatesService.GetCandidateSkills(model.Id);
             model.Notes = candidate.Notes;
 
             return View(model);
@@ -127,14 +127,14 @@ namespace ITSystem.Controllers
             }
             else
             {
-                candidate = unitOfWork.CandidateRepository.GetById(id.Value);
+                candidate = candidatesService.GetById(id.Value);
                 if (candidate == null)
                 {
                     return RedirectToAction("List");
                 }
             }
             
-            unitOfWork.CandidateRepository.Delete(candidate);
+            candidatesService.Delete(candidate);
             return RedirectToAction("List");
         }
     }
