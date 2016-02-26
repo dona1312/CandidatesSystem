@@ -2,16 +2,16 @@
 @using System.Web.Optimization
 @Styles.Render("~/Content/css")
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = Model.Id > 0 ? "Edit candidate" : "Create candidate";
 }
 
 <div class="wrapper">
+
+    <h4>@ViewBag.Title</h4>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-
         <div class="form-horizontal">
-            <h4>@ViewBag.Title</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.Id)
