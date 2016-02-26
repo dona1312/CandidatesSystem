@@ -14,25 +14,31 @@ namespace ITSystem.Controllers
     {
         UnitOfWork unitOfWork = new UnitOfWork();
 
-        // GET: Users
         public ActionResult List()
         {
             CandidateListVM model = new CandidateListVM();
-            TryUpdateModel(model);
             model.Candidates = unitOfWork.CandidateRepository.GetAll();
-            
             return View(model);
         }
 
         public ActionResult Edit(int? id)
         {
-            Candidate candidate = new Candidate();
-            if (id > 0)
+            CandidateEditVM model = new CandidateEditVM();
+            Candidate candidate;
+
+            if (!id.HasValue)
+            {
+                candidate = new Candidate();
+            }
+            else
             {
                 candidate = unitOfWork.CandidateRepository.GetById(id.Value);
+                if (candidate == null)
+                {
+                    return RedirectToAction("List");
+                }
             }
 
-            CandidateEditVM model = new CandidateEditVM();
             model.Id = candidate.Id;
             model.FirstName = candidate.FirstName;
             model.MiddleName = candidate.MiddleName;
@@ -46,19 +52,31 @@ namespace ITSystem.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Edit(CandidateEditVM model)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit()
         {
+            CandidateEditVM model = new CandidateEditVM();
+            TryUpdateModel(model);
+
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            Candidate candidate = new Candidate();
-
-            if (model.Id > 0)
+            Candidate candidate;
+            if (model.Id == 0)
+            {
+                candidate = new Candidate();
+            }
+            else
             {
                 candidate = unitOfWork.CandidateRepository.GetById(model.Id);
+                if (candidate == null)
+                {
+                    return RedirectToAction("List");
+                }
             }
+
             candidate.Id = model.Id;
             candidate.FirstName = model.FirstName;
             candidate.MiddleName = model.MiddleName;
@@ -66,25 +84,35 @@ namespace ITSystem.Controllers
             candidate.Email = model.Email;
             candidate.Skills = model.Skills;
             candidate.Notes = model.Notes;
-            unitOfWork.CandidateRepository.Save(candidate);
 
+            unitOfWork.CandidateRepository.Save(candidate);
             return RedirectToAction("List");
         }
 
         public ActionResult Details(int? id)
         {
-            Candidate candidate = new Candidate();
-            if (id > 0)
+            CandidateEditVM model = new CandidateEditVM();
+            TryUpdateModel(model);
+            Candidate candidate;
+            if (!id.HasValue)
+            {
+                return RedirectToAction("List");
+            }
+            else
             {
                 candidate = unitOfWork.CandidateRepository.GetById(id.Value);
+                if (candidate == null)
+                {
+                    return RedirectToAction("List");
+                }
             }
-            CandidateEditVM model = new CandidateEditVM();
+
             model.Id = candidate.Id;
             model.FirstName = candidate.FirstName;
             model.MiddleName = candidate.MiddleName;
             model.LastName = candidate.LastName;
             model.Email = candidate.Email;
-            model.Skills =unitOfWork.SkillsRepository.GetAll(s=>s.CandidateId==model.Id);
+            model.Skills = unitOfWork.SkillsRepository.GetAll(s => s.CandidateId == model.Id);
             model.Notes = candidate.Notes;
 
             return View(model);
@@ -92,13 +120,20 @@ namespace ITSystem.Controllers
 
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-                return RedirectToAction("List");
-            Candidate candidate = unitOfWork.CandidateRepository.GetById(id.Value);
-            if (candidate == null)
+            Candidate candidate;
+            if (!id.HasValue)
             {
                 return RedirectToAction("List");
             }
+            else
+            {
+                candidate = unitOfWork.CandidateRepository.GetById(id.Value);
+                if (candidate == null)
+                {
+                    return RedirectToAction("List");
+                }
+            }
+            
             unitOfWork.CandidateRepository.Delete(candidate);
             return RedirectToAction("List");
         }
