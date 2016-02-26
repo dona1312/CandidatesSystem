@@ -8,7 +8,6 @@ namespace ITSystem.Repositories
 {
     public class UsedTechnologyRepository: BaseRepository<UsedTechnology>
     {
-        public UsedTechnologyRepository(ITSystemContext context)
-            : base(context) { }
+        public UsedTechnologyRepository() : base() { }
     }
 }

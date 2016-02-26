@@ -8,7 +8,6 @@ namespace ITSystem.Repositories
 {
     public class SkillRepository:BaseRepository<Skill>
     {
-        public SkillRepository(ITSystemContext context)
-            : base(context) { }
+        public SkillRepository() : base() { }
     }
 }

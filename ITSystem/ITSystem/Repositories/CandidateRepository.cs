@@ -8,7 +8,6 @@ namespace ITSystem.Repositories
 {
     public class CandidateRepository : BaseRepository<Candidate>
     {
-        public CandidateRepository(ITSystemContext context)
-            : base(context) { }
+        public CandidateRepository() : base() { }
     }
 }

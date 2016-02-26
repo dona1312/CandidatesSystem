@@ -13,8 +13,8 @@ namespace ITSystem.Services
 
         public static void Authenticate(string username, string password)
         {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            LoggedConsultant = unitOfWork.ConsultantRepository.GetAll(cons => cons.Username == username && cons.Password == password).FirstOrDefault();
+            ConsultantRepository consultantRepo = new ConsultantRepository();
+            LoggedConsultant = consultantRepo.GetAll(cons => cons.Username == username && cons.Password == password).FirstOrDefault();
         }
 
         public static void Logout()

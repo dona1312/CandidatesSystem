@@ -8,12 +8,12 @@ using System.Linq.Expressions;
 
 namespace ITSystem.Repositories
 {
-    public abstract class BaseRepository<T> where T: BaseModel
+    public class BaseRepository<T> where T: BaseModel
     {
         protected readonly ITSystemContext context;
         protected readonly DbSet<T> dbSet;
 
-        public BaseRepository(ITSystemContext context)
+        public BaseRepository()
         {
             this.context = new ITSystemContext();
             this.dbSet = this.context.Set<T>();
@@ -32,10 +32,12 @@ namespace ITSystem.Repositories
             }
 
         }
+
         public T GetById(int id)
         {
             return dbSet.Find(id);
         }
+
         public virtual void Save(T item)
         {
             if (item.Id <= 0)
