@@ -9,5 +9,7 @@ namespace ITSystem.ViewModels.Candidates
     public class CandidateListVM
     {
         public List<Candidate> Candidates { get; set; }
+
+        public string Search { get; set; }
     }
 }

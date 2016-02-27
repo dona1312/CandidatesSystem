@@ -15,19 +15,9 @@
             <nav id="main-nav">
                 <ul>
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @if (ITSystem.Services.AuthenticationService.LoggedConsultant != null)
-                    {
-                        if (ITSystem.Services.AuthenticationService.LoggedConsultant.Rank == (RankEnum)Enum.Parse(typeof(RankEnum), RankEnum.Admin.ToString()))
-                        {
-                            <li><a href="#">Consultans</a></li>
-                        }
-                        <li>@Html.ActionLink("Candidates", "List", "Candidates")</li>
-                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                    }
+                    <li><a href="#">Consultans</a></li>
+                    <li>@Html.ActionLink("Candidates", "List", "Candidates")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
                 </ul>
             </nav>
         </div>
@@ -41,7 +31,7 @@
         </div>
     </footer>
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 </body>
 </html>
