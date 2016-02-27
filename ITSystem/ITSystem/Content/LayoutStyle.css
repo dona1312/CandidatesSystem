@@ -45,7 +45,14 @@ header{
 	display: block;
 	content: '';
 	clear: both;
+} 
+
+#Search{
+    width: 35%;
+    margin-right: 17px;
+    float: left;
 }
+
 footer{
 	background-color: #0b1538;
 	color: #fff;
