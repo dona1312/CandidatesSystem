@@ -1,14 +1,15 @@
 ﻿@model ITSystem.ViewModels.Candidates.CandidateListVM
 @using System.Web.Optimization
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "List Candidates";
 }
 <div class="wrapper">
     <p>
         @Html.ActionLink("Create New", "Edit")
     </p>
 
-    <h3>Search by: </h3>
+    <h3>@ViewBag.Title</h3>
+    @*<h3>Search by: </h3>
     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Dropdown
@@ -19,9 +20,17 @@
             <li><a href="#">by Programming Language</a></li>
             <li><a href="#">by used tehcnologies</a></li>
         </ul>
-    </div>
+    </div>*@
 
-    <h2>All Candidates</h2>
+    @using (Html.BeginForm())
+    {
+        <h5>Find by name:</h5>
+        <p>
+            @Html.TextBoxFor(model => model.Search, new { @class = "form-control" })
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </p>
+    }
+
     <table class="table">
         <tr id="table-head">
             <th>

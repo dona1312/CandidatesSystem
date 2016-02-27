@@ -18,6 +18,8 @@ namespace ITSystem.Controllers
         {
             CandidateListVM model = new CandidateListVM();
             model.Candidates = candidatesService.GetAll();
+            TryUpdateModel(model);
+            model.Candidates = candidatesService.FindCandidates(model.Search);
             return View(model);
         }
 
