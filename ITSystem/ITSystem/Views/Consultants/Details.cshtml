@@ -1,7 +1,6 @@
-﻿@model ITSystem.ViewModels.Candidates.CandidateEditVM
-
+﻿@model ITSystem.ViewModels.Consultants.ConsultantEditVM
 @{
-    ViewBag.Title = "Canidate Details";
+    ViewBag.Title = "Consultant Details";
 }
 
 <div class="wrapper">
@@ -9,19 +8,27 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MiddleName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MiddleName)
         </dd>
 
         <dt>
@@ -40,20 +47,17 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Skills)
+            @Html.DisplayNameFor(model => model.Rank)
         </dt>
-       
+
         <dd>
-            @for (int i = 0; i < Model.Skills.Count; i++)
-            {
-                <p>@Model.Skills[i].ProgrammingLanguage.Name</p>
-                <p>@Model.Skills[i].UsedTechnology.Name</p>
-            }
+            @Html.DisplayFor(model => model.Rank)
         </dd>
+
     </dl>
+
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
         @Html.ActionLink("Back to List", "List")
     </p>
 </div>
-

@@ -1,5 +1,4 @@
 ﻿@model ITSystem.ViewModels.Candidates.CandidateEditVM
-@using System.Web.Optimization
 @Styles.Render("~/Content/css")
 @{
     ViewBag.Title = Model.Id > 0 ? "Edit candidate" : "Create candidate";
@@ -77,7 +76,6 @@
             </div>
         </div>
     }
-
     <div>
         @Html.ActionLink("Back to List", "List")
         @Scripts.Render("~/bundles/jquery")
