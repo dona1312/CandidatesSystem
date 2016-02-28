@@ -52,6 +52,12 @@ header{
     margin-right: 17px;
     float: left;
 }
+#Search:after{
+	float: none;
+	display: block;
+	content: '';
+	clear: both;
+}
 
 footer{
 	background-color: #0b1538;
@@ -74,14 +80,13 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     width: 95%;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
-    th, td {
-        text-align: left;
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-    }
 #table-head{
     text-align:center;
+}
+th, td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
 }
 dt,dd{
     padding:0.3%;
