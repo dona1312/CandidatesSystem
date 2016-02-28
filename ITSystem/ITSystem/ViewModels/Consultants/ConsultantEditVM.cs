@@ -34,8 +34,6 @@ namespace ITSystem.ViewModels.Consultants
 
         [Required(ErrorMessage="Please input email! It is required!")]
         [StringLength(100, MinimumLength=5, ErrorMessage="Email must contain between 5 and 100 characters")]
-        [RegularExpression(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
-        ErrorMessage="Please enter correct email address")]
         public string Email { get; set; }
 
         public RankEnum Rank { get; set; }
