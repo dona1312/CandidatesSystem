@@ -18,8 +18,11 @@ namespace ITSystem.Controllers
         {
             CandidateListVM model = new CandidateListVM();
             model.Candidates = candidatesService.GetAll();
+
+            // find candidate
             TryUpdateModel(model);
             model.Candidates = candidatesService.FindCandidates(model.Search);
+
             return View(model);
         }
 
@@ -48,7 +51,6 @@ namespace ITSystem.Controllers
             model.Skills = candidate.Skills;
             model.Email = candidate.Email;
             model.Notes = candidate.Notes;
-
             return View(model);
         }
 
@@ -96,6 +98,7 @@ namespace ITSystem.Controllers
             CandidateEditVM model = new CandidateEditVM();
             TryUpdateModel(model);
             Candidate candidate;
+
             if (!id.HasValue)
             {
                 return RedirectToAction("List");
@@ -116,7 +119,6 @@ namespace ITSystem.Controllers
             model.Email = candidate.Email;
             model.Skills = candidatesService.GetCandidateSkills(model.Id);
             model.Notes = candidate.Notes;
-
             return View(model);
         }
 

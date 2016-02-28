@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ConsultantsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CandidatesController.cs" />
     <Compile Include="Enums\RankEnum.cs" />
@@ -159,9 +160,12 @@
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\ModelServices\BaseService.cs" />
     <Compile Include="Services\ModelServices\CandidatesService.cs" />
+    <Compile Include="Services\ModelServices\ConsultantService.cs" />
     <Compile Include="ViewModels\Account\AccountLoginVM.cs" />
     <Compile Include="ViewModels\Candidates\CandidateEditVM.cs" />
     <Compile Include="ViewModels\Candidates\CandidateListVM.cs" />
+    <Compile Include="ViewModels\Consultants\ConsultantEditVM.cs" />
+    <Compile Include="ViewModels\Consultants\ConsultantListVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -174,6 +178,9 @@
     <Content Include="Views\Candidates\Details.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Consultants\List.cshtml" />
+    <Content Include="Views\Consultants\Edit.cshtml" />
+    <Content Include="Views\Consultants\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
