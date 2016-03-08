@@ -49,23 +49,6 @@ namespace ITSystem.Migrations
                 .Index(t => t.CandidateId);
             
             CreateTable(
-                "dbo.Skills",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        CandidateId = c.Int(nullable: false),
-                        UsedTechnologyId = c.Int(nullable: false),
-                        ProgrammingLanguageId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Candidates", t => t.CandidateId, cascadeDelete: true)
-                .ForeignKey("dbo.ProgrammingLanguages", t => t.ProgrammingLanguageId, cascadeDelete: true)
-                .ForeignKey("dbo.UsedTechnologies", t => t.UsedTechnologyId, cascadeDelete: true)
-                .Index(t => t.CandidateId)
-                .Index(t => t.UsedTechnologyId)
-                .Index(t => t.ProgrammingLanguageId);
-            
-            CreateTable(
                 "dbo.ProgrammingLanguages",
                 c => new
                     {
@@ -96,28 +79,57 @@ namespace ITSystem.Migrations
                 .Index(t => t.Consultant_Id)
                 .Index(t => t.Candidate_Id);
             
+            CreateTable(
+                "dbo.ProgrammingLanguageCandidates",
+                c => new
+                    {
+                        ProgrammingLanguage_Id = c.Int(nullable: false),
+                        Candidate_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.ProgrammingLanguage_Id, t.Candidate_Id })
+                .ForeignKey("dbo.ProgrammingLanguages", t => t.ProgrammingLanguage_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Candidates", t => t.Candidate_Id, cascadeDelete: true)
+                .Index(t => t.ProgrammingLanguage_Id)
+                .Index(t => t.Candidate_Id);
+            
+            CreateTable(
+                "dbo.UsedTechnologyCandidates",
+                c => new
+                    {
+                        UsedTechnology_Id = c.Int(nullable: false),
+                        Candidate_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.UsedTechnology_Id, t.Candidate_Id })
+                .ForeignKey("dbo.UsedTechnologies", t => t.UsedTechnology_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Candidates", t => t.Candidate_Id, cascadeDelete: true)
+                .Index(t => t.UsedTechnology_Id)
+                .Index(t => t.Candidate_Id);
+            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Skills", "UsedTechnologyId", "dbo.UsedTechnologies");
-            DropForeignKey("dbo.Skills", "ProgrammingLanguageId", "dbo.ProgrammingLanguages");
-            DropForeignKey("dbo.Skills", "CandidateId", "dbo.Candidates");
+            DropForeignKey("dbo.UsedTechnologyCandidates", "Candidate_Id", "dbo.Candidates");
+            DropForeignKey("dbo.UsedTechnologyCandidates", "UsedTechnology_Id", "dbo.UsedTechnologies");
+            DropForeignKey("dbo.ProgrammingLanguageCandidates", "Candidate_Id", "dbo.Candidates");
+            DropForeignKey("dbo.ProgrammingLanguageCandidates", "ProgrammingLanguage_Id", "dbo.ProgrammingLanguages");
             DropForeignKey("dbo.Notes", "CandidateId", "dbo.Candidates");
             DropForeignKey("dbo.Notes", "ConsultantId", "dbo.Consultants");
             DropForeignKey("dbo.ConsultantCandidates", "Candidate_Id", "dbo.Candidates");
             DropForeignKey("dbo.ConsultantCandidates", "Consultant_Id", "dbo.Consultants");
+            DropIndex("dbo.UsedTechnologyCandidates", new[] { "Candidate_Id" });
+            DropIndex("dbo.UsedTechnologyCandidates", new[] { "UsedTechnology_Id" });
+            DropIndex("dbo.ProgrammingLanguageCandidates", new[] { "Candidate_Id" });
+            DropIndex("dbo.ProgrammingLanguageCandidates", new[] { "ProgrammingLanguage_Id" });
             DropIndex("dbo.ConsultantCandidates", new[] { "Candidate_Id" });
             DropIndex("dbo.ConsultantCandidates", new[] { "Consultant_Id" });
-            DropIndex("dbo.Skills", new[] { "ProgrammingLanguageId" });
-            DropIndex("dbo.Skills", new[] { "UsedTechnologyId" });
-            DropIndex("dbo.Skills", new[] { "CandidateId" });
             DropIndex("dbo.Notes", new[] { "CandidateId" });
             DropIndex("dbo.Notes", new[] { "ConsultantId" });
+            DropTable("dbo.UsedTechnologyCandidates");
+            DropTable("dbo.ProgrammingLanguageCandidates");
             DropTable("dbo.ConsultantCandidates");
             DropTable("dbo.UsedTechnologies");
             DropTable("dbo.ProgrammingLanguages");
-            DropTable("dbo.Skills");
             DropTable("dbo.Notes");
             DropTable("dbo.Consultants");
             DropTable("dbo.Candidates");

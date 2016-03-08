@@ -14,6 +14,7 @@ namespace ITSystem.Models
         
         public virtual List<Note> Notes { get; set; }
         public virtual List<Consultant> Consultants { get; set; }
-        public virtual List<Skill> Skills { get; set; }
+        public virtual List<UsedTechnology> UsedTechnologies { get; set; }
+        public virtual List<ProgrammingLanguage> ProgrammingLanguages { get; set; }
     }
 }

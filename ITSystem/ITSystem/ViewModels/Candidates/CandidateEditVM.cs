@@ -35,7 +35,7 @@ namespace ITSystem.ViewModels.Candidates
         ErrorMessage = "Please enter correct email address")]
         public string Email { get; set; }
 
-        public List<Skill> Skills { get; set; }
+        //public List<Skill> Skills { get; set; }
         public List<Note> Notes { get; set; }
     }
 }

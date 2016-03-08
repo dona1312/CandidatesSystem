@@ -48,7 +48,6 @@ namespace ITSystem.Controllers
             model.FirstName = candidate.FirstName;
             model.MiddleName = candidate.MiddleName;
             model.LastName = candidate.LastName;
-            model.Skills = candidate.Skills;
             model.Email = candidate.Email;
             model.Notes = candidate.Notes;
             return View(model);
@@ -86,7 +85,6 @@ namespace ITSystem.Controllers
             candidate.MiddleName = model.MiddleName;
             candidate.LastName = model.LastName;
             candidate.Email = model.Email;
-            candidate.Skills = model.Skills;
             candidate.Notes = model.Notes;
 
             candidatesService.Save(candidate);
@@ -117,7 +115,6 @@ namespace ITSystem.Controllers
             model.MiddleName = candidate.MiddleName;
             model.LastName = candidate.LastName;
             model.Email = candidate.Email;
-            model.Skills = candidatesService.GetCandidateSkills(model.Id);
             model.Notes = candidate.Notes;
             return View(model);
         }
@@ -136,9 +133,11 @@ namespace ITSystem.Controllers
                 {
                     return RedirectToAction("List");
                 }
+
             }
             
             candidatesService.Delete(candidate);
+
             return RedirectToAction("List");
         }
     }

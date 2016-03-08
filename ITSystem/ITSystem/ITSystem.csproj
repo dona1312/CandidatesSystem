@@ -137,9 +137,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ITSystemContext.cs" />
-    <Compile Include="Migrations\201602201636238_Init.cs" />
-    <Compile Include="Migrations\201602201636238_Init.Designer.cs">
-      <DependentUpon>201602201636238_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201603081913386_Init.cs" />
+    <Compile Include="Migrations\201603081913386_Init.Designer.cs">
+      <DependentUpon>201603081913386_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -147,7 +147,6 @@
     <Compile Include="Models\Consultant.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\ProgrammingLanguage.cs" />
-    <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\UsedTechnology.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
@@ -155,7 +154,6 @@
     <Compile Include="Repositories\ConsultantRepository.cs" />
     <Compile Include="Repositories\NoteRepository.cs" />
     <Compile Include="Repositories\ProgrammingLanguageRepository.cs" />
-    <Compile Include="Repositories\SkillRepository.cs" />
     <Compile Include="Repositories\UsedTechnologyRepository.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\ModelServices\BaseService.cs" />
@@ -192,8 +190,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602201636238_Init.resx">
-      <DependentUpon>201602201636238_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603081913386_Init.resx">
+      <DependentUpon>201603081913386_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

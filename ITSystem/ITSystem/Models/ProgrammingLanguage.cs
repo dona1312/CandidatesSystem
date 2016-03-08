@@ -8,5 +8,6 @@ namespace ITSystem.Models
     public class ProgrammingLanguage : BaseModel
     {
         public string Name { get; set; }
+        public virtual List<Candidate> Candidate { get; set; }
     }
 }
