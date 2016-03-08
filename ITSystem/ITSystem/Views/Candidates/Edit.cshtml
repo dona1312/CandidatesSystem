@@ -48,27 +48,17 @@
                 </div>
             </div>
 
-            @*<div class="form-group">
-                @Html.LabelFor(model => model.Skills, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.UsedTechnology, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-
-                    <table>
-                        @for (int i = 0; i < Model.Skills.Count; i++)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(model => model.Skills[i].ProgrammingLanguage.Name);</td>
-                                <td>@Html.ActionLink("Add", "Add", new { id = Model.Skills[i].Id }) | @Html.ActionLink("Delete", "Delete", new { id = Model.Skills[i].Id })</td>
-                                
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayFor(model => model.Skills[i].UsedTechnology.Name);</td>
-                                <td>@Html.ActionLink("Add", "Add", new { id = Model.Skills[i].Id }) | @Html.ActionLink("Delete", "Delete", new { id = Model.Skills[i].Id })</td>
-
-                            </tr>
-                        }
-                    </table>
+                    @foreach (var usedTech in Model.UsedTechnology)
+                    {
+                        <input type="checkbox" name="SelectedTeams" value="@usedTech.Value" id="@usedTech.Value" @Html.Raw(usedTech.Selected ? "checked" : String.Empty) />
+                        <label for="@usedTech.Value">@usedTech.Text</label>
+                    }
                 </div>
-            </div>*@
+            </div>
+
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">

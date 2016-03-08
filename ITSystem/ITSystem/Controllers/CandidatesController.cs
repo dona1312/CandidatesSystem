@@ -49,6 +49,8 @@ namespace ITSystem.Controllers
             model.MiddleName = candidate.MiddleName;
             model.LastName = candidate.LastName;
             model.Email = candidate.Email;
+            model.UsedTechnology = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
+           // model.ProgrammingLanguages = candidate.ProgrammingLanguages;
             model.Notes = candidate.Notes;
             return View(model);
         }
@@ -85,6 +87,8 @@ namespace ITSystem.Controllers
             candidate.MiddleName = model.MiddleName;
             candidate.LastName = model.LastName;
             candidate.Email = model.Email;
+           // candidate.UsedTechnologies = model.UsedTechnology;
+           // candidate.ProgrammingLanguages = model.ProgrammingLanguages;
             candidate.Notes = model.Notes;
 
             candidatesService.Save(candidate);
@@ -115,6 +119,8 @@ namespace ITSystem.Controllers
             model.MiddleName = candidate.MiddleName;
             model.LastName = candidate.LastName;
             model.Email = candidate.Email;
+            model.UsedTechnology = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
+           // model.ProgrammingLanguages = candidate.ProgrammingLanguages;
             model.Notes = candidate.Notes;
             return View(model);
         }

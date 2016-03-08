@@ -12,11 +12,6 @@ namespace ITSystem.Services.ModelServices
     {
         public CandidatesService() : base() { }
 
-        //public List<Skill> GetCandidateSkills(int modelId)
-        //{
-        //    return new SkillRepository().GetAll(s => s.CandidateId == modelId);
-        //}
-
         public List<Candidate> FindCandidates(string searched)
         {
             if (!string.IsNullOrEmpty(searched))
@@ -25,17 +20,34 @@ namespace ITSystem.Services.ModelServices
             }
             return new CandidateRepository().GetAll();
         }
-        //public IEnumerable<SelectListItem> GetSelectedUsedTechnologies(int id)
-        //{
-        //    return new SkillRepository().GetAll(c => c.CandidateId == id).Select(s => new SelectListItem
-        //    {
-        //        Text = s.UsedTechnology.Name,
-        //        Value = s.UsedTechnologyId.ToString()
-        //    });
-        //}
-        //public void SetSelectedSkills(Candidate can, string[] utIds, string[] plIds)
-        //{
+        public IEnumerable<SelectListItem> GetSelectedUsedTechnologies(List<UsedTechnology> usedTech)
+        {
+            if (usedTech == null)
+                usedTech = new List<UsedTechnology>();
 
-        //}
-    }
+            var selectedIds = usedTech.Select(t => t.Id);
+
+            return new UsedTechnologyRepository().GetAll().Select(t => new SelectListItem
+            {
+                Text = t.Name,
+                Value = t.Id.ToString(),
+                Selected = selectedIds.Contains(t.Id)
+            });
+        }
+        public void SetSelectedUsedTechnologies(Candidate can, string[] usedTechIds)
+        {
+            if (usedTechIds == null)
+                usedTechIds = new string[0];
+
+            can.UsedTechnologies.Clear();
+            foreach (UsedTechnology usedTech in new UsedTechnologyRepository().GetAll())
+            {
+                if (usedTechIds.Contains(usedTech.ToString()))
+                {
+                    can.UsedTechnologies.Add(usedTech);
+                }
+            }
+        }
+        
+    } 
 }

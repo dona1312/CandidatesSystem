@@ -40,15 +40,20 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Skills)
+            @Html.DisplayNameFor(model => model.UsedTechnology)
         </dt>
        
         <dd>
-            @for (int i = 0; i < Model.Skills.Count; i++)
-            {
-                <p>@Model.Skills[i].ProgrammingLanguage.Name</p>
-                <p>@Model.Skills[i].UsedTechnology.Name</p>
-            }
+            <div class="form-group">
+                @Html.LabelFor(model => model.UsedTechnology, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @foreach (var usedTech in Model.UsedTechnology)
+                    {
+                        <input type="checkbox" name="SelectedTeams" value="@usedTech.Value" id="@usedTech.Value" @Html.Raw(usedTech.Selected ? "checked" : String.Empty) />
+                        <label for="@usedTech.Value">@usedTech.Text</label>
+                    }
+                </div>
+            </div>
         </dd>
     </dl>
     <p>

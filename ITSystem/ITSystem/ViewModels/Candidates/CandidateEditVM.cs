@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ITSystem.ViewModels.Candidates
 {
@@ -35,7 +36,8 @@ namespace ITSystem.ViewModels.Candidates
         ErrorMessage = "Please enter correct email address")]
         public string Email { get; set; }
 
-        //public List<Skill> Skills { get; set; }
+        public IEnumerable<SelectListItem> UsedTechnology { get; set; }
+        public IEnumerable<SelectListItem> ProgrammingLanguages { get; set; }
         public List<Note> Notes { get; set; }
     }
 }
