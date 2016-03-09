@@ -10,12 +10,19 @@ namespace ITSystem.Repositories
 {
     public class BaseRepository<T> where T: BaseModel
     {
-        protected readonly ITSystemContext context;
+        protected readonly DbContext context;
         protected readonly DbSet<T> dbSet;
+        protected UnitOfWork unitOfWork;
 
         public BaseRepository()
         {
             this.context = new ITSystemContext();
+            this.dbSet = this.context.Set<T>();
+        }
+        public BaseRepository(UnitOfWork unitOfwork)
+        {
+            this.unitOfWork = unitOfwork;
+            this.context = unitOfWork.Context;
             this.dbSet = this.context.Set<T>();
         }
 

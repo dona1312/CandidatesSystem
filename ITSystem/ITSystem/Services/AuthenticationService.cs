@@ -15,11 +15,17 @@ namespace ITSystem.Services
         {
             ConsultantRepository consultantRepo = new ConsultantRepository();
             LoggedConsultant = consultantRepo.GetAll(cons => cons.Username == username && cons.Password == password).FirstOrDefault();
+            if (LoggedConsultant != null)
+            {
+                HttpContext.Current.Session[typeof(AuthenticationService).Name] = LoggedConsultant;
+            }
+
         }
 
         public static void Logout()
         {
             Authenticate(null, null);
+            HttpContext.Current.Session[typeof(AuthenticationService).Name] = null;
         }
     }
 }

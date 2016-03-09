@@ -9,5 +9,6 @@ namespace ITSystem.Repositories
     public class NoteRepository : BaseRepository<Note>
     {
         public NoteRepository() : base() { }
+        public NoteRepository(UnitOfWork unitOfWork) : base(unitOfWork) { }
     }
 }

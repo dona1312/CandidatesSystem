@@ -9,5 +9,6 @@ namespace ITSystem.Repositories
     public class CandidateRepository : BaseRepository<Candidate>
     {
         public CandidateRepository() : base() { }
+        public CandidateRepository(UnitOfWork unitOfWork) : base(unitOfWork) { }
     }
 }

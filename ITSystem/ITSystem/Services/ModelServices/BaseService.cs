@@ -11,15 +11,17 @@ namespace ITSystem.Services.ModelServices
     public class BaseService<T> where T : BaseModel, new()
     {
         private readonly BaseRepository<T> baseRepo;
+        protected UnitOfWork unitOfWork;
 
         public BaseService()
         {
-            baseRepo = new BaseRepository<T>();
+            unitOfWork = new UnitOfWork();
+            baseRepo = new BaseRepository<T>(this.unitOfWork);
         }
 
         public List<T> GetAll(Expression<Func<T, bool>> filter = null)
         {
-            return baseRepo.GetAll(filter);        
+            return baseRepo.GetAll(filter);
         }
 
         public T GetById(int id)
@@ -30,6 +32,14 @@ namespace ITSystem.Services.ModelServices
         public void Save(T item)
         {
             baseRepo.Save(item);
+            try
+            {
+                this.unitOfWork.Commit();
+            }
+            catch (Exception)
+            {
+                this.unitOfWork.RollBack();
+            }
         }
 
         public void Delete(T item)

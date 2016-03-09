@@ -63,10 +63,6 @@ namespace ITSystem.Controllers
             CandidateEditVM model = new CandidateEditVM();
             TryUpdateModel(model);
 
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
 
             Candidate candidate;
             if (model.Id == 0)
@@ -82,16 +78,23 @@ namespace ITSystem.Controllers
                 }
             }
 
+            if (!ModelState.IsValid)
+            {
+                model.UsedTechnology = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
+                model.ProgrammingLanguages = candidatesService.GetSelectedProgrammingLanguages(candidate.ProgrammingLanguages);
+                return View(model);
+            }
             candidate.Id = model.Id;
             candidate.FirstName = model.FirstName;
             candidate.MiddleName = model.MiddleName;
             candidate.LastName = model.LastName;
             candidate.Email = model.Email;
-           // candidate.UsedTechnologies = model.UsedTechnology;
-           // candidate.ProgrammingLanguages = model.ProgrammingLanguages;
             candidate.Notes = model.Notes;
 
+            candidatesService.SetSelectedUsedTechnologies(candidate, model.SelectedUsedTechnologies);
+            candidatesService.SetSelectedProgrammingLanguages(candidate, model.SelectedProgrammingLanguages);
             candidatesService.Save(candidate);
+
             return RedirectToAction("List");
         }
 
@@ -141,7 +144,7 @@ namespace ITSystem.Controllers
                 }
 
             }
-            
+
             candidatesService.Delete(candidate);
 
             return RedirectToAction("List");

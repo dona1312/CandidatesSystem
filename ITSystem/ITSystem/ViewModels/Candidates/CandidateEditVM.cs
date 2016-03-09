@@ -36,6 +36,8 @@ namespace ITSystem.ViewModels.Candidates
         ErrorMessage = "Please enter correct email address")]
         public string Email { get; set; }
 
+        public string[] SelectedUsedTechnologies { get; set; }
+        public string[] SelectedProgrammingLanguages { get; set; }
         public IEnumerable<SelectListItem> UsedTechnology { get; set; }
         public IEnumerable<SelectListItem> ProgrammingLanguages { get; set; }
         public List<Note> Notes { get; set; }

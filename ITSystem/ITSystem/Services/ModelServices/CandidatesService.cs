@@ -39,10 +39,12 @@ namespace ITSystem.Services.ModelServices
             if (usedTechIds == null)
                 usedTechIds = new string[0];
 
-            can.UsedTechnologies.Clear();
-            foreach (UsedTechnology usedTech in new UsedTechnologyRepository().GetAll())
+            if (can.Id != 0)
+                can.UsedTechnologies.Clear();
+
+            foreach (UsedTechnology usedTech in new UsedTechnologyRepository(base.unitOfWork).GetAll())
             {
-                if (usedTechIds.Contains(usedTech.ToString()))
+                if (usedTechIds.Contains(usedTech.Id.ToString()))
                 {
                     can.UsedTechnologies.Add(usedTech);
                 }
@@ -66,16 +68,17 @@ namespace ITSystem.Services.ModelServices
         {
             if (progLangIds == null)
                 progLangIds = new string[0];
-
+            if(can.Id!=0)
             can.ProgrammingLanguages.Clear();
-            foreach (ProgrammingLanguage progLang in new ProgrammingLanguageRepository().GetAll())
+
+            foreach (ProgrammingLanguage progLang in new ProgrammingLanguageRepository(base.unitOfWork).GetAll())
             {
-                if (progLangIds.Contains(progLang.ToString()))
+                if (progLangIds.Contains(progLang.Id.ToString()))
                 {
                     can.ProgrammingLanguages.Add(progLang);
                 }
             }
         }
-        
-    } 
+
+    }
 }

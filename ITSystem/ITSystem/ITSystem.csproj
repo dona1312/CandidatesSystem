@@ -154,6 +154,7 @@
     <Compile Include="Repositories\ConsultantRepository.cs" />
     <Compile Include="Repositories\NoteRepository.cs" />
     <Compile Include="Repositories\ProgrammingLanguageRepository.cs" />
+    <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Repositories\UsedTechnologyRepository.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\ModelServices\BaseService.cs" />

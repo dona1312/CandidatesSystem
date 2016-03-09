@@ -9,5 +9,6 @@ namespace ITSystem.Repositories
     public class ProgrammingLanguageRepository : BaseRepository<ProgrammingLanguage>
     {
         public ProgrammingLanguageRepository() : base() { }
+        public ProgrammingLanguageRepository(UnitOfWork unitOfWork):base(unitOfWork){}
     }
 }

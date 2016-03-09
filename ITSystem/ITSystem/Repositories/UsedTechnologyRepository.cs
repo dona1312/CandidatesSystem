@@ -9,5 +9,6 @@ namespace ITSystem.Repositories
     public class UsedTechnologyRepository: BaseRepository<UsedTechnology>
     {
         public UsedTechnologyRepository() : base() { }
+        public UsedTechnologyRepository(UnitOfWork unitOfWork) : base(unitOfWork) { }
     }
 }
