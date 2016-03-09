@@ -48,6 +48,34 @@ namespace ITSystem.Services.ModelServices
                 }
             }
         }
+        public IEnumerable<SelectListItem> GetSelectedProgrammingLanguages(List<ProgrammingLanguage> progLang)
+        {
+            if (progLang == null)
+                progLang = new List<ProgrammingLanguage>();
+
+            var selectedIds = progLang.Select(t => t.Id);
+
+            return new ProgrammingLanguageRepository().GetAll().Select(t => new SelectListItem
+            {
+                Text = t.Name,
+                Value = t.Id.ToString(),
+                Selected = selectedIds.Contains(t.Id)
+            });
+        }
+        public void SetSelectedProgrammingLanguages(Candidate can, string[] progLangIds)
+        {
+            if (progLangIds == null)
+                progLangIds = new string[0];
+
+            can.ProgrammingLanguages.Clear();
+            foreach (ProgrammingLanguage progLang in new ProgrammingLanguageRepository().GetAll())
+            {
+                if (progLangIds.Contains(progLang.ToString()))
+                {
+                    can.ProgrammingLanguages.Add(progLang);
+                }
+            }
+        }
         
     } 
 }

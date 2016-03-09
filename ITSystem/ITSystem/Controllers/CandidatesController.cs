@@ -50,7 +50,7 @@ namespace ITSystem.Controllers
             model.LastName = candidate.LastName;
             model.Email = candidate.Email;
             model.UsedTechnology = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
-           // model.ProgrammingLanguages = candidate.ProgrammingLanguages;
+            model.ProgrammingLanguages = candidatesService.GetSelectedProgrammingLanguages(candidate.ProgrammingLanguages);
             model.Notes = candidate.Notes;
             return View(model);
         }
@@ -120,7 +120,7 @@ namespace ITSystem.Controllers
             model.LastName = candidate.LastName;
             model.Email = candidate.Email;
             model.UsedTechnology = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
-           // model.ProgrammingLanguages = candidate.ProgrammingLanguages;
+            model.ProgrammingLanguages = candidatesService.GetSelectedProgrammingLanguages(candidate.ProgrammingLanguages);
             model.Notes = candidate.Notes;
             return View(model);
         }
