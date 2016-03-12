@@ -37,10 +37,10 @@ namespace ITSystem.Controllers
                 case "fname_asc":
                     model.Consultants = model.Consultants.OrderBy(c => c.FirstName).ToList();
                     break;
-                case "username_asc":
+                case "username_desc":
                     model.Consultants = model.Consultants.OrderBy(c => c.Username).ToList();
                     break;
-                case "username_desc":
+                case "username_asc":
                 default:
                     model.Consultants = model.Consultants.OrderByDescending(c => c.Username).ToList();
                     break;

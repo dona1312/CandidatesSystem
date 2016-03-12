@@ -70,6 +70,7 @@ namespace ITSystem.Controllers
             model.UsedTechnology = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
             model.ProgrammingLanguages = candidatesService.GetSelectedProgrammingLanguages(candidate.ProgrammingLanguages);
             model.Notes = candidate.Notes;
+
             return View(model);
         }
 
@@ -80,7 +81,6 @@ namespace ITSystem.Controllers
         {
             CandidateEditVM model = new CandidateEditVM();
             TryUpdateModel(model);
-
 
             Candidate candidate;
             if (model.Id == 0)

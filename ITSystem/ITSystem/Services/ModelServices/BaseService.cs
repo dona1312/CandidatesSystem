@@ -31,9 +31,9 @@ namespace ITSystem.Services.ModelServices
 
         public void Save(T item)
         {
-            baseRepo.Save(item);
             try
             {
+                baseRepo.Save(item);
                 this.unitOfWork.Commit();
             }
             catch (Exception)
@@ -44,7 +44,15 @@ namespace ITSystem.Services.ModelServices
 
         public void Delete(T item)
         {
-            baseRepo.Delete(item);
+            try
+            {
+                baseRepo.Delete(item);
+                this.unitOfWork.Commit();
+            }
+            catch (Exception)
+            {
+                this.unitOfWork.RollBack();
+            }
         }
     }
 }
