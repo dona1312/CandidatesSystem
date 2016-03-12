@@ -7,11 +7,8 @@ using System.Web.Mvc;
 
 namespace ITSystem.ViewModels.Candidates
 {
-    public class CandidateListVM
+    public class CandidateListVM : ListVM
     {
-        
         public List<Candidate> Candidates { get; set; }
-
-        public string Search { get; set; }
     }
 }

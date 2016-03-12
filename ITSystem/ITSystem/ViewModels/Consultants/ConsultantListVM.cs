@@ -6,9 +6,8 @@ using ITSystem.Models;
 
 namespace ITSystem.ViewModels.Consultants
 {
-    public class ConsultantListVM
+    public class ConsultantListVM : ListVM
     {
         public List<Consultant> Consultants { get; set; }
-        public string Search { get; set; }
     }
 }

@@ -19,9 +19,27 @@ namespace ITSystem.Controllers
             CandidateListVM model = new CandidateListVM();
             model.Candidates = candidatesService.GetAll();
 
-            // find candidate
+            // search
             TryUpdateModel(model);
             model.Candidates = candidatesService.FindCandidates(model.Search);
+
+            // sort
+            switch (model.SortOrder)
+            {
+                case "lname_asc":
+                    model.Candidates = model.Candidates.OrderBy(c => c.LastName).ToList();
+                    break;
+                case "lname_desc":
+                    model.Candidates = model.Candidates.OrderByDescending(c => c.LastName).ToList();
+                    break;
+                case "fname_desc":
+                    model.Candidates = model.Candidates.OrderByDescending(c => c.FirstName).ToList();
+                    break;
+                case "fname_asc":
+                default:
+                    model.Candidates = model.Candidates.OrderBy(c => c.FirstName).ToList();
+                    break;
+            }
 
             return View(model);
         }
@@ -146,7 +164,6 @@ namespace ITSystem.Controllers
             }
 
             candidatesService.Delete(candidate);
-
             return RedirectToAction("List");
         }
     }

@@ -165,6 +165,7 @@
     <Compile Include="ViewModels\Candidates\CandidateListVM.cs" />
     <Compile Include="ViewModels\Consultants\ConsultantEditVM.cs" />
     <Compile Include="ViewModels\Consultants\ConsultantListVM.cs" />
+    <Compile Include="ViewModels\ListVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

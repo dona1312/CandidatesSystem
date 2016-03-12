@@ -18,9 +18,33 @@ namespace ITSystem.Controllers
             ConsultantListVM model = new ConsultantListVM();
             model.Consultants = consultantService.GetAll();
 
-            // find consultant
+            // search
             TryUpdateModel(model);
             model.Consultants = consultantService.FindConsultants(model.Search);
+
+            // sort
+            switch (model.SortOrder)
+            {
+                case "lname_asc":
+                    model.Consultants = model.Consultants.OrderBy(c => c.LastName).ToList();
+                    break;
+                case "lname_desc":
+                    model.Consultants = model.Consultants.OrderByDescending(c => c.LastName).ToList();
+                    break;
+                case "fname_desc":
+                    model.Consultants = model.Consultants.OrderByDescending(c => c.FirstName).ToList();
+                    break;
+                case "fname_asc":
+                    model.Consultants = model.Consultants.OrderBy(c => c.FirstName).ToList();
+                    break;
+                case "username_asc":
+                    model.Consultants = model.Consultants.OrderBy(c => c.Username).ToList();
+                    break;
+                case "username_desc":
+                default:
+                    model.Consultants = model.Consultants.OrderByDescending(c => c.Username).ToList();
+                    break;
+            }
 
             return View(model);
         }
