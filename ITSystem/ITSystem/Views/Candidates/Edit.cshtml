@@ -49,9 +49,9 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.UsedTechnology, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.UsedTechnologies, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @foreach (var usedTech in Model.UsedTechnology)
+                    @foreach (var usedTech in Model.UsedTechnologies)
                     {
                         <input type="checkbox" name="SelectedUsedTechnologies" value="@usedTech.Value" id="@usedTech.Value" @Html.Raw(usedTech.Selected ? "checked" : String.Empty) />
                         <label for="@usedTech.Value">@usedTech.Text</label>

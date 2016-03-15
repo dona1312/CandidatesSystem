@@ -40,11 +40,29 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.UsedTechnology)
+            @Html.DisplayNameFor(model => model.UsedTechnologies)
         </dt>
-       
-     
-            
+        <dd>
+            @foreach (var usedTech in Model.UsedTechnologies)
+            {
+                if (usedTech.Selected)
+                {
+                    <label for="@usedTech.Value">@usedTech.Text</label>
+                }
+            }
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgrammingLanguages)
+        </dt>
+        <dd>
+            @foreach (var progLang in Model.ProgrammingLanguages)
+            {
+                if (progLang.Selected)
+                {
+                    <label for="@progLang.Value">@progLang.Text</label>
+                }
+            }
+        </dd>
     </dl>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

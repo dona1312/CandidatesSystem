@@ -38,7 +38,11 @@ namespace ITSystem.ViewModels.Candidates
 
         public string[] SelectedUsedTechnologies { get; set; }
         public string[] SelectedProgrammingLanguages { get; set; }
-        public IEnumerable<SelectListItem> UsedTechnology { get; set; }
+
+        [Display(Name="Used Technologies")]
+        public IEnumerable<SelectListItem> UsedTechnologies { get; set; }
+
+        [Display(Name="Programming Language")]
         public IEnumerable<SelectListItem> ProgrammingLanguages { get; set; }
         public List<Note> Notes { get; set; }
     }

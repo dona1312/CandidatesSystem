@@ -88,7 +88,7 @@ namespace ITSystem.Controllers
             model.LastName = candidate.LastName;
             model.Email = candidate.Email;
             model.Notes = candidate.Notes;
-            model.UsedTechnology = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
+            model.UsedTechnologies = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
             model.ProgrammingLanguages = candidatesService.GetSelectedProgrammingLanguages(candidate.ProgrammingLanguages);
 
             return View(model);
@@ -118,7 +118,7 @@ namespace ITSystem.Controllers
 
             if (!ModelState.IsValid)
             {
-                model.UsedTechnology = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
+                model.UsedTechnologies = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
                 model.ProgrammingLanguages = candidatesService.GetSelectedProgrammingLanguages(candidate.ProgrammingLanguages);
                 return View(model);
             }
@@ -161,7 +161,7 @@ namespace ITSystem.Controllers
             model.LastName = candidate.LastName;
             model.Email = candidate.Email;
             model.Notes = candidate.Notes;
-            model.UsedTechnology = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
+            model.UsedTechnologies = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
             model.ProgrammingLanguages = candidatesService.GetSelectedProgrammingLanguages(candidate.ProgrammingLanguages);
             
             return View(model);
