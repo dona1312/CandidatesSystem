@@ -133,6 +133,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CandidatesController.cs" />
     <Compile Include="Enums\RankEnum.cs" />
+    <Compile Include="Enums\SearchEnum.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

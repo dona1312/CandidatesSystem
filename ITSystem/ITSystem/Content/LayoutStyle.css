@@ -52,6 +52,10 @@ header{
     margin-right: 17px;
     float: left;
 }
+#SearchType{
+    width: 44%;
+    margin: 5px 0;
+}
 #Search:after{
 	float: none;
 	display: block;

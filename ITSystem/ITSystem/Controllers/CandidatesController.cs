@@ -7,6 +7,9 @@ using ITSystem.ViewModels;
 using ITSystem.ViewModels.Candidates;
 using ITSystem.Services.ModelServices;
 using ITSystem.Models;
+using ITSystem.Enums;
+
+using ITSystem.Repositories;
 
 namespace ITSystem.Controllers
 {
@@ -18,10 +21,27 @@ namespace ITSystem.Controllers
         {
             CandidateListVM model = new CandidateListVM();
             model.Candidates = candidatesService.GetAll();
+            TryUpdateModel(model);
 
             // search
-            TryUpdateModel(model);
-            model.Candidates = candidatesService.FindCandidates(model.Search);
+            if (!String.IsNullOrEmpty(model.Search))
+            {
+                switch (model.SearchType)
+                {
+                    case SearchEnum.UsedTechnology:
+                        model.Candidates = model.Candidates.Where(c => c.UsedTechnologies
+                                                            .Any(t => t.Name.ToLower().Contains(model.Search.ToLower()))).ToList();
+                        break;
+                    case SearchEnum.ProgrammingLanguage:
+                        model.Candidates = model.Candidates.Where(c => c.ProgrammingLanguages
+                                                            .Any(p => p.Name.ToLower().Contains(model.Search.ToLower()))).ToList();
+                        break;
+                    case SearchEnum.Name:
+                    default:
+                        model.Candidates = model.Candidates.Where(c => c.FirstName.ToLower().Contains(model.Search.ToLower()) || c.LastName.ToLower().Contains(model.Search.ToLower())).ToList();
+                        break;
+                }
+            }
 
             // sort
             switch (model.SortOrder)
@@ -67,9 +87,9 @@ namespace ITSystem.Controllers
             model.MiddleName = candidate.MiddleName;
             model.LastName = candidate.LastName;
             model.Email = candidate.Email;
+            model.Notes = candidate.Notes;
             model.UsedTechnology = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
             model.ProgrammingLanguages = candidatesService.GetSelectedProgrammingLanguages(candidate.ProgrammingLanguages);
-            model.Notes = candidate.Notes;
 
             return View(model);
         }
@@ -102,17 +122,17 @@ namespace ITSystem.Controllers
                 model.ProgrammingLanguages = candidatesService.GetSelectedProgrammingLanguages(candidate.ProgrammingLanguages);
                 return View(model);
             }
+
             candidate.Id = model.Id;
             candidate.FirstName = model.FirstName;
             candidate.MiddleName = model.MiddleName;
             candidate.LastName = model.LastName;
             candidate.Email = model.Email;
             candidate.Notes = model.Notes;
-
             candidatesService.SetSelectedUsedTechnologies(candidate, model.SelectedUsedTechnologies);
             candidatesService.SetSelectedProgrammingLanguages(candidate, model.SelectedProgrammingLanguages);
-            candidatesService.Save(candidate);
 
+            candidatesService.Save(candidate);
             return RedirectToAction("List");
         }
 
@@ -140,9 +160,10 @@ namespace ITSystem.Controllers
             model.MiddleName = candidate.MiddleName;
             model.LastName = candidate.LastName;
             model.Email = candidate.Email;
+            model.Notes = candidate.Notes;
             model.UsedTechnology = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
             model.ProgrammingLanguages = candidatesService.GetSelectedProgrammingLanguages(candidate.ProgrammingLanguages);
-            model.Notes = candidate.Notes;
+            
             return View(model);
         }
 

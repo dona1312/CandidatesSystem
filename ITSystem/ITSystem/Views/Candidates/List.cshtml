@@ -9,25 +9,13 @@
         @Html.ActionLink("Create New", "Edit")
     </p>
 
-    @*<h3>Search by: </h3>
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Dropdown
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#">by Name</a></li>
-            <li><a href="#">by Programming Language</a></li>
-            <li><a href="#">by used tehcnologies</a></li>
-        </ul>
-    </div>*@
-
     @using (Html.BeginForm())
     {
-        <h5>Find by name:</h5>
+        <h5>Find candidate by name, technology or programming language:</h5>
         <p>
             @Html.TextBoxFor(model => model.Search, new { @class = "form-control" })
             <input type="submit" value="Search" class="btn btn-primary" />
+            @Html.EnumDropDownListFor(model => model.SearchType, new {@class = "form-control" })
         </p>
     }
 

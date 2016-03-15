@@ -12,15 +12,6 @@ namespace ITSystem.Services.ModelServices
     {
         public CandidatesService() : base() { }
 
-        public List<Candidate> FindCandidates(string searched)
-        {
-            if (!string.IsNullOrEmpty(searched))
-            {
-                return new CandidateRepository().GetAll(m => m.FirstName.ToLower().Contains(searched.ToLower()) || m.MiddleName.ToLower().Contains(searched.ToLower()) || m.LastName.ToLower().Contains(searched.ToLower())).ToList();
-            }
-            return new CandidateRepository().GetAll();
-        }
-
         public IEnumerable<SelectListItem> GetSelectedUsedTechnologies(List<UsedTechnology> usedTech)
         {
             if (usedTech == null)
