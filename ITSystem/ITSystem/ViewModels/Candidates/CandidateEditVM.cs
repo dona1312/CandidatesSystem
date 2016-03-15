@@ -44,6 +44,7 @@ namespace ITSystem.ViewModels.Candidates
 
         [Display(Name="Programming Language")]
         public IEnumerable<SelectListItem> ProgrammingLanguages { get; set; }
-        public List<Note> Notes { get; set; }
+         [DataType(DataType.MultilineText)]
+        public string Notes { get; set; }
     }
 }

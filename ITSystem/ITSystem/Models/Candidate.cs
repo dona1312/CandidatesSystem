@@ -11,8 +11,7 @@ namespace ITSystem.Models
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        
-        public virtual List<Note> Notes { get; set; }
+        public string Notes { get; set; }
         public virtual List<Consultant> Consultants { get; set; }
         public virtual List<UsedTechnology> UsedTechnologies { get; set; }
         public virtual List<ProgrammingLanguage> ProgrammingLanguages { get; set; }
