@@ -11,7 +11,7 @@ namespace ITSystem.Services
     {
         public static Consultant LoggedConsultant { get; set; }
 
-        public static void Authenticate(string username, string password)
+        public static void AuthenticateConsultant(string username, string password)
         {
             ConsultantRepository consultantRepo = new ConsultantRepository();
             LoggedConsultant = consultantRepo.GetAll().FirstOrDefault(c => c.Username == username && c.Password == password);
@@ -19,8 +19,8 @@ namespace ITSystem.Services
 
         public static void Logout()
         {
-            Authenticate(null, null);
-            //HttpContext.Current.Session[typeof(AuthenticationService).Name] = null;
+            //CookieService.DeleteCookie();
+            AuthenticateConsultant(null, null); 
         }
     }
 }

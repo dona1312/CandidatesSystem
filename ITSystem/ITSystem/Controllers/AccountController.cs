@@ -24,11 +24,18 @@ namespace ITSystem.Controllers
             AccountLoginVM model = new AccountLoginVM();
             TryUpdateModel(model);
 
-            AuthenticationService.Authenticate(model.Username, model.Password);
+            if (!model.IsRemembered)
+                AuthenticationService.AuthenticateConsultant(model.Username, model.Password);
+            else
+                CookieService.AuthenticateConsultant(model.Username, model.Password);
 
             if (AuthenticationService.LoggedConsultant != null)
             {
-                return Redirect(model.RedirectUrl);
+                if (!String.IsNullOrEmpty(model.RedirectUrl))
+                {
+                    return Redirect(model.RedirectUrl);
+                }
+                return RedirectToAction("Index", "Home");
             }
 
             return View(model);
