@@ -9,7 +9,7 @@ using ITSystem.Models;
 
 namespace ITSystem.Controllers
 {
-    public class ConsultantsController : Controller
+    public class ConsultantsController : BaseController
     {
         ConsultantService consultantService = new ConsultantService();
 

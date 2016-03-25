@@ -13,7 +13,7 @@ using ITSystem.Repositories;
 
 namespace ITSystem.Controllers
 {
-    public class CandidatesController : Controller
+    public class CandidatesController : BaseController
     {
         CandidatesService candidatesService = new CandidatesService();
 

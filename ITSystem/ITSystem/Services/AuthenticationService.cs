@@ -14,18 +14,13 @@ namespace ITSystem.Services
         public static void Authenticate(string username, string password)
         {
             ConsultantRepository consultantRepo = new ConsultantRepository();
-            LoggedConsultant = consultantRepo.GetAll(cons => cons.Username == username && cons.Password == password).FirstOrDefault();
-            if (LoggedConsultant != null)
-            {
-                HttpContext.Current.Session[typeof(AuthenticationService).Name] = LoggedConsultant;
-            }
-
+            LoggedConsultant = consultantRepo.GetAll().FirstOrDefault(c => c.Username == username && c.Password == password);
         }
 
         public static void Logout()
         {
             Authenticate(null, null);
-            HttpContext.Current.Session[typeof(AuthenticationService).Name] = null;
+            //HttpContext.Current.Session[typeof(AuthenticationService).Name] = null;
         }
     }
 }

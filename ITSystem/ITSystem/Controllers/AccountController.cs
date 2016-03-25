@@ -12,18 +12,8 @@ namespace ITSystem.Controllers
     {
         public ActionResult Login(string redirectUrl)
         {
-            if (AuthenticationService.LoggedConsultant != null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
             AccountLoginVM model = new AccountLoginVM();
-
-            if (!String.IsNullOrEmpty(redirectUrl))
-            {
-                model.RedirectUrl = redirectUrl;
-            }
-
+            model.RedirectUrl = redirectUrl;
             return View(model);
         }
 
@@ -36,15 +26,12 @@ namespace ITSystem.Controllers
 
             AuthenticationService.Authenticate(model.Username, model.Password);
 
-            if (AuthenticationService.LoggedConsultant == null)
+            if (AuthenticationService.LoggedConsultant != null)
             {
-                ModelState.AddModelError(String.Empty, "Invalid usename or password");
-                return View(model);
+                return Redirect(model.RedirectUrl);
             }
-            else
-            {
-                return RedirectToAction("List", "Candidates");
-            }
+
+            return View(model);
         }
 
         public ActionResult Logout()
