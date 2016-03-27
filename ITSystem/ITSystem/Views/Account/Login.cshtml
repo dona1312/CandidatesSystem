@@ -32,7 +32,8 @@
             <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-10">
                     <div class="checkbox">
-                        <label><input type="checkbox"> Remember me</label>
+                        @Html.CheckBoxFor(model => model.IsRemembered)
+                        @Html.LabelFor(model => model.IsRemembered)
                     </div>
                 </div>
             </div>
