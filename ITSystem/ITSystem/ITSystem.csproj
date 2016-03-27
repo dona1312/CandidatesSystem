@@ -183,6 +183,7 @@
     <Content Include="Views\Consultants\List.cshtml" />
     <Content Include="Views\Consultants\Edit.cshtml" />
     <Content Include="Views\Consultants\Details.cshtml" />
+    <Content Include="Views\Shared\PartialViews\_DeleteConfirmation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

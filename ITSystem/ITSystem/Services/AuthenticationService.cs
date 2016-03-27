@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using ITSystem.Models;
 using ITSystem.Repositories;
+using ITSystem.Services.ModelServices;
 
 namespace ITSystem.Services
 {
@@ -19,8 +20,7 @@ namespace ITSystem.Services
 
         public static void Logout()
         {
-            //CookieService.DeleteCookie();
-            AuthenticateConsultant(null, null); 
+            AuthenticateConsultant(null, null);
         }
     }
 }
