@@ -61,7 +61,7 @@
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        <a href="#" data-toggle="modal" data-target="#modal-delete-confirmation" data-url="/Consultants/Delete/@item.Id" data-additionalinfo="@item.Username">Delete</a>
                     </td>
                 </tr>
             }
