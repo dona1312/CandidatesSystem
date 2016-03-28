@@ -1,0 +1,31 @@
+﻿@model ITSystem.ViewModels.Email.EmailSendVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+    <h2>Index</h2>
+
+    @using (Html.BeginForm())
+    {
+        <h5>Find candidate by name, technology or programming language:</h5>
+        <p>
+            @Html.TextBoxFor(model => model.Search, new { @class = "form-control" })
+            <input type="submit" value="Search" class="btn btn-primary" onclick="makeItGreen()" />
+            @Html.EnumDropDownListFor(model => model.SearchType, new { @class = "form-control" })
+        </p>
+    }
+    <div id="blue">
+        @Html.ActionLink("Next", "Set", "Email")
+    </div>
+</div>
+@if (Model.Recievers != null)
+{
+    <script>
+        function makeItGreen() {
+            var button = $('#blue');
+            button.css("background-color", "green");
+        }
+    </script>
+}

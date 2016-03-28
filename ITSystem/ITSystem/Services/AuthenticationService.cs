@@ -21,6 +21,7 @@ namespace ITSystem.Services
         public static void Logout()
         {
             AuthenticateConsultant(null, null);
+          
         }
     }
 }

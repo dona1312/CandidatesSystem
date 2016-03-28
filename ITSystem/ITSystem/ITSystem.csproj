@@ -131,6 +131,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ConsultantsController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CandidatesController.cs" />
     <Compile Include="Enums\RankEnum.cs" />
@@ -140,9 +141,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ITSystemContext.cs" />
-    <Compile Include="Migrations\201603161004518_Init.cs" />
-    <Compile Include="Migrations\201603161004518_Init.Designer.cs">
-      <DependentUpon>201603161004518_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201603271927261_Init.cs" />
+    <Compile Include="Migrations\201603271927261_Init.Designer.cs">
+      <DependentUpon>201603271927261_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Repositories\UsedTechnologyRepository.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\CookieService.cs" />
+    <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\ModelServices\BaseService.cs" />
     <Compile Include="Services\ModelServices\CandidatesService.cs" />
     <Compile Include="Services\ModelServices\ConsultantService.cs" />
@@ -167,6 +169,7 @@
     <Compile Include="ViewModels\Candidates\CandidateListVM.cs" />
     <Compile Include="ViewModels\Consultants\ConsultantEditVM.cs" />
     <Compile Include="ViewModels\Consultants\ConsultantListVM.cs" />
+    <Compile Include="ViewModels\Email\EmailSendVM.cs" />
     <Compile Include="ViewModels\ListVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +187,8 @@
     <Content Include="Views\Consultants\Edit.cshtml" />
     <Content Include="Views\Consultants\Details.cshtml" />
     <Content Include="Views\Shared\PartialViews\_DeleteConfirmation.cshtml" />
+    <Content Include="Views\Email\Index.cshtml" />
+    <Content Include="Views\Email\Set.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -195,8 +200,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603161004518_Init.resx">
-      <DependentUpon>201603161004518_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603271927261_Init.resx">
+      <DependentUpon>201603271927261_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
