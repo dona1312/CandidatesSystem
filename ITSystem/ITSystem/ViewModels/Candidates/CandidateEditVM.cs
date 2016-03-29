@@ -8,10 +8,8 @@ using System.Web.Mvc;
 
 namespace ITSystem.ViewModels.Candidates
 {
-    public class CandidateEditVM
+    public class CandidateEditVM : EditVM
     {
-        public int Id { get; set; }
-
         [Required(ErrorMessage="Please input first name! It is required!")]
         [StringLength(70, MinimumLength=3, ErrorMessage="First name must contain between 3 and 70 letters")]
         [RegularExpression(@"^([A-z -]+)$", ErrorMessage = "First name can consist only letters, spaces and dashes")]
@@ -36,6 +34,9 @@ namespace ITSystem.ViewModels.Candidates
         ErrorMessage = "Please enter correct email address")]
         public string Email { get; set; }
 
+        [DataType(DataType.MultilineText)]
+        public string Notes { get; set; }
+
         public string[] SelectedUsedTechnologies { get; set; }
         public string[] SelectedProgrammingLanguages { get; set; }
 
@@ -43,8 +44,6 @@ namespace ITSystem.ViewModels.Candidates
         public IEnumerable<SelectListItem> UsedTechnologies { get; set; }
 
         [Display(Name="Programming Language")]
-        public IEnumerable<SelectListItem> ProgrammingLanguages { get; set; }
-         [DataType(DataType.MultilineText)]
-        public string Notes { get; set; }
+        public IEnumerable<SelectListItem> ProgrammingLanguages { get; set; } 
     }
 }

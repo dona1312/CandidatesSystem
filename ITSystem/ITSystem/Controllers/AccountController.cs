@@ -24,11 +24,7 @@ namespace ITSystem.Controllers
             AccountLoginVM model = new AccountLoginVM();
             TryUpdateModel(model);
 
-            if (!model.IsRemembered)
-                AuthenticationService.AuthenticateConsultant(model.Username, model.Password);
-            else
-                CookieService.AuthenticateConsultant(model.Username, model.Password);
-
+            AuthenticationService.AuthenticateConsultant(model.Username, model.Password);
             if (AuthenticationService.LoggedConsultant != null)
             {
                 if (!String.IsNullOrEmpty(model.RedirectUrl))
@@ -37,7 +33,6 @@ namespace ITSystem.Controllers
                 }
                 return RedirectToAction("Index", "Home");
             }
-
             return View(model);
         }
 

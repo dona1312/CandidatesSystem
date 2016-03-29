@@ -15,6 +15,7 @@ namespace ITSystem.Services
         public static string Subject { get; set; }
         public static string Body { get; set; }
         public static List<Candidate> Recievers { get; set; }
+
         public static void SendEmail()
         {
             try
@@ -23,8 +24,8 @@ namespace ITSystem.Services
                 ss.EnableSsl = true;
                 ss.DeliveryMethod = SmtpDeliveryMethod.Network;
                 ss.UseDefaultCredentials = false;
-                //ss.Credentials = new NetworkCredential(AuthenticationService.LoggedConsultant.Email, Pass);
                 ss.Credentials = new NetworkCredential("testforhallmanager@gmail.com", "hallmanager");
+                
                 foreach (var item in Recievers)
                 {
                     MailMessage mm = new MailMessage("testforhallmanager@gmail.com", item.Email, Subject, "Hello, " + item.FirstName + " " + item.LastName + ", "+Environment.NewLine+ Body);
@@ -32,9 +33,8 @@ namespace ITSystem.Services
                     mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
                     ss.Send(mm);
                 }
-
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

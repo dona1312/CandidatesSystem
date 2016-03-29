@@ -15,10 +15,9 @@ namespace ITSystem.Controllers
 {
     public class CandidatesController : BaseController
     {
-        CandidatesService candidatesService = new CandidatesService();
-
         public ActionResult List()
         {
+            CandidatesService candidatesService = new CandidatesService();
             CandidateListVM model = new CandidateListVM();
             model.Candidates = candidatesService.GetAll();
             TryUpdateModel(model);
@@ -60,12 +59,12 @@ namespace ITSystem.Controllers
                     model.Candidates = model.Candidates.OrderBy(c => c.FirstName).ToList();
                     break;
             }
-
             return View(model);
         }
 
         public ActionResult Edit(int? id)
         {
+            CandidatesService candidatesService = new CandidatesService();
             CandidateEditVM model = new CandidateEditVM();
             Candidate candidate;
 
@@ -90,7 +89,6 @@ namespace ITSystem.Controllers
             model.Notes = candidate.Notes;
             model.UsedTechnologies = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
             model.ProgrammingLanguages = candidatesService.GetSelectedProgrammingLanguages(candidate.ProgrammingLanguages);
-
             return View(model);
         }
 
@@ -99,6 +97,7 @@ namespace ITSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit()
         {
+            CandidatesService candidatesService = new CandidatesService();
             CandidateEditVM model = new CandidateEditVM();
             TryUpdateModel(model);
 
@@ -138,10 +137,11 @@ namespace ITSystem.Controllers
 
         public ActionResult Details(int? id)
         {
+            CandidatesService candidatesService = new CandidatesService();
             CandidateEditVM model = new CandidateEditVM();
             TryUpdateModel(model);
-            Candidate candidate;
 
+            Candidate candidate;
             if (!id.HasValue)
             {
                 return RedirectToAction("List");
@@ -162,13 +162,13 @@ namespace ITSystem.Controllers
             model.Email = candidate.Email;
             model.Notes = candidate.Notes;
             model.UsedTechnologies = candidatesService.GetSelectedUsedTechnologies(candidate.UsedTechnologies);
-            model.ProgrammingLanguages = candidatesService.GetSelectedProgrammingLanguages(candidate.ProgrammingLanguages);
-            
+            model.ProgrammingLanguages = candidatesService.GetSelectedProgrammingLanguages(candidate.ProgrammingLanguages);         
             return View(model);
         }
 
         public ActionResult Delete(int? id)
         {
+            CandidatesService candidatesService = new CandidatesService();
             Candidate candidate;
             if (!id.HasValue)
             {

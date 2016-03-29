@@ -1,9 +1,10 @@
-﻿using ITSystem.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using ITSystem.Enums;
+using ITSystem.Models;
 
 namespace ITSystem.ViewModels.Email
 {
@@ -15,6 +16,6 @@ namespace ITSystem.ViewModels.Email
         public string Username { get; set; }
         public string Password { get; set; }
         public SearchEnum SearchType { get; set; }
-        public List<ITSystem.Models.Candidate> Recievers { get; set; }
+        public List<Candidate> Recievers { get; set; }
     }
 }

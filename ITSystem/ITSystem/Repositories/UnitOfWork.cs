@@ -10,11 +10,13 @@ namespace ITSystem.Repositories
     {
         public DbContext Context { get; private set; }
         private DbContextTransaction transaction = null;
+
         public UnitOfWork()
         {
             this.Context = new ITSystemContext();
             this.transaction = Context.Database.BeginTransaction();
         }
+
         public void Commit()
         {
             if (transaction != null)
@@ -23,6 +25,7 @@ namespace ITSystem.Repositories
                 this.transaction = null;
             }
         }
+
         public void RollBack()
         {
             if (this.transaction != null)
@@ -31,6 +34,7 @@ namespace ITSystem.Repositories
                 this.transaction = null;
             }
         }
+
         public void Dispose()
         {
             Commit();

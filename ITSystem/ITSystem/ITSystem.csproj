@@ -159,7 +159,6 @@
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Repositories\UsedTechnologyRepository.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
-    <Compile Include="Services\CookieService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\ModelServices\BaseService.cs" />
     <Compile Include="Services\ModelServices\CandidatesService.cs" />
@@ -169,6 +168,7 @@
     <Compile Include="ViewModels\Candidates\CandidateListVM.cs" />
     <Compile Include="ViewModels\Consultants\ConsultantEditVM.cs" />
     <Compile Include="ViewModels\Consultants\ConsultantListVM.cs" />
+    <Compile Include="ViewModels\EditVM.cs" />
     <Compile Include="ViewModels\Email\EmailSendVM.cs" />
     <Compile Include="ViewModels\ListVM.cs" />
   </ItemGroup>

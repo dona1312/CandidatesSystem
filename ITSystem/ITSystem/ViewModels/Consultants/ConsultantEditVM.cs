@@ -7,10 +7,8 @@ using ITSystem.Enums;
 
 namespace ITSystem.ViewModels.Consultants
 {
-    public class ConsultantEditVM
+    public class ConsultantEditVM : EditVM
     {
-        public int Id { get; set; }
-
         [Required(ErrorMessage="Please input username! It is required!")]
         [StringLength(50, MinimumLength=3, ErrorMessage="Username must contain between 3 and 50 letters")]
         [RegularExpression(@"^([A-z -]+)$", ErrorMessage = "Username can consist only letters, spaces and dashes")]

@@ -11,10 +11,9 @@ namespace ITSystem.Controllers
 {
     public class ConsultantsController : BaseController
     {
-        ConsultantService consultantService = new ConsultantService();
-
         public ActionResult List()
         {
+            ConsultantService consultantService = new ConsultantService();
             ConsultantListVM model = new ConsultantListVM();
             model.Consultants = consultantService.GetAll();
 
@@ -38,19 +37,19 @@ namespace ITSystem.Controllers
                     model.Consultants = model.Consultants.OrderBy(c => c.FirstName).ToList();
                     break;
                 case "username_desc":
-                    model.Consultants = model.Consultants.OrderBy(c => c.Username).ToList();
+                    model.Consultants = model.Consultants.OrderByDescending(c => c.Username).ToList();
                     break;
                 case "username_asc":
                 default:
-                    model.Consultants = model.Consultants.OrderByDescending(c => c.Username).ToList();
+                    model.Consultants = model.Consultants.OrderBy(c => c.Username).ToList();
                     break;
             }
-
             return View(model);
         }
 
         public ActionResult Edit(int? id)
         {
+            ConsultantService consultantService = new ConsultantService();
             ConsultantEditVM model = new ConsultantEditVM();
             Consultant consultant;
 
@@ -81,13 +80,9 @@ namespace ITSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit()
         {
+            ConsultantService consultantService = new ConsultantService();
             ConsultantEditVM model = new ConsultantEditVM();
             TryUpdateModel(model);
-
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
 
             Consultant consultant;
             if (model.Id == 0)
@@ -101,6 +96,11 @@ namespace ITSystem.Controllers
                 {
                     return RedirectToAction("List");
                 }
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
             }
 
             consultant.Id = model.Id;
@@ -117,6 +117,7 @@ namespace ITSystem.Controllers
 
         public ActionResult Details(int? id)
         {
+            ConsultantService consultantService = new ConsultantService();
             ConsultantEditVM model = new ConsultantEditVM();
             Consultant consultant;
 
@@ -145,6 +146,7 @@ namespace ITSystem.Controllers
 
         public ActionResult Delete(int? id)
         {
+            ConsultantService consultantService = new ConsultantService();
             Consultant consultant;
             if (!id.HasValue)
             {
