@@ -14,7 +14,6 @@ namespace ITSystem.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public RankEnum Rank  { get; set; }
-        public string RememberMeHash { get; set; }
         public virtual List<Candidate> Candidates { get; set; }
     }
 }

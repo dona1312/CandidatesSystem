@@ -1,11 +1,10 @@
 ﻿@model ITSystem.ViewModels.Email.EmailSendVM
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Email Recievers";
 }
 
 <div class="wrapper">
-    <h2>Index</h2>
+    <h3>@ViewBag.Title</h3>
 
     @using (Html.BeginForm())
     {
@@ -20,6 +19,7 @@
         @Html.ActionLink("Next", "Set", "Email")
     </div>
 </div>
+
 @if (Model.Recievers != null)
 {
     <script>

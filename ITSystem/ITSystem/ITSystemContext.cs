@@ -15,7 +15,5 @@ namespace ITSystem
         public DbSet<Candidate> Candidates { get; set; }
         public DbSet<UsedTechnology> UsedTechnologies { get; set; }
         public DbSet<ProgrammingLanguage> ProgrammingLanguages { get; set; }
-
-
     }
 }

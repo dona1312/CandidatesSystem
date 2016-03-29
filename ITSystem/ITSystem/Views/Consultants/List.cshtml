@@ -24,7 +24,7 @@
    }
    else
    {
-        <table class="table">
+        <table class="table table-bordered table-hover table-responsive">
             <tr>
                 <th>
                     @Html.ActionLink("Username", "List", "Consultants", new RouteValueDictionary { { "SortOrder", Model.SortOrder == "username_asc" ? "username_desc" : "username_asc" }, { "Search", Model.Search } }, null)

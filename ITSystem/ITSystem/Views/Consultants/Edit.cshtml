@@ -1,11 +1,12 @@
 ﻿@model ITSystem.ViewModels.Consultants.ConsultantEditVM
 @Styles.Render("~/Content/css")
 @{
-    ViewBag.Title = Model.Id > 0 ? "Edit consultant" : "Create new consultant";
+    ViewBag.Title = Model.Id > 0 ? "Edit Consultant" : "Create New Consultant";
 }
 
 <div class="wrapper">
     <h3>@ViewBag.Title</h3>
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()

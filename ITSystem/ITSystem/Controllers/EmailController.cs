@@ -14,9 +14,8 @@ using System.Web.Mvc;
 
 namespace ITSystem.Controllers
 {
-    public class EmailController : Controller
+    public class EmailController : BaseController
     {
-        // GET: Email
         public ActionResult Index()
         {
             EmailSendVM model = new EmailSendVM();
@@ -44,12 +43,14 @@ namespace ITSystem.Controllers
             }
             return View(model);
         }
+
         public ActionResult Set()
         {
             EmailSendVM model = new EmailSendVM();
             return View(model);
 
         }
+
         public ActionResult Fill()
         {
             EmailSendVM model = new EmailSendVM();
@@ -59,12 +60,11 @@ namespace ITSystem.Controllers
             EmailService.Pass = model.Password;
 
             return RedirectToAction("SendMail", "Email");
-
         }
+
         public ActionResult SendMail()
         {
             EmailService.SendEmail();
-            // System.Threading.Tasks.Task.Run(() => EmailService.SendEmail(model.Recievers));
             return RedirectToAction("Index", "Home");
         }
     }

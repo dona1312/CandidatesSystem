@@ -16,9 +16,6 @@ namespace ITSystem.ViewModels.Account
         [Required(ErrorMessage = "Please input password! It is required!")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Password must contain between 3 and 50 letters")]
         public string Password { get; set; }
-
-        [Display(Name = "Remeber me")]
-        public bool IsRemembered { get; set; }
        
         public string RedirectUrl { get; set; }      
     }
