@@ -146,22 +146,13 @@ namespace ITSystem.Controllers
 
         public ActionResult Delete(int? id)
         {
-            ConsultantService consultantService = new ConsultantService();
-            Consultant consultant;
             if (!id.HasValue)
             {
-                consultant = new Consultant();
-            }
-            else
-            {
-                consultant = consultantService.GetById(id.Value);
-                if (consultant == null)
-                {
-                    return RedirectToAction("List");
-                }
+                return RedirectToAction("List");
             }
 
-            consultantService.Delete(consultant);
+            ConsultantService consultantService = new ConsultantService();
+            consultantService.Delete(id.Value);
             return RedirectToAction("List");
         }
     }

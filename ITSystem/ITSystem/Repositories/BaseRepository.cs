@@ -30,14 +30,9 @@ namespace ITSystem.Repositories
         {            
             IQueryable<T> result = dbSet;
             if (filter != null)
-            {
                 return result.Where(filter).ToList();
-            }
             else
-            {
                 return result.ToList();
-            }
-
         }
 
         public T GetById(int id)
@@ -47,31 +42,26 @@ namespace ITSystem.Repositories
 
         public virtual void Save(T item)
         {
-            if (item.Id <= 0)
-            {
+            if (item.Id == 0)
                 Insert(item);
-            }
             else
-            {
                 Update(item);
-            }
+            this.context.SaveChanges();
         }
 
         private void Insert(T item)
         {
             this.dbSet.Add(item);
-            this.context.SaveChanges();
         }
 
         private void Update(T item)
         {
             this.context.Entry(item).State = EntityState.Modified;
-            this.context.SaveChanges();
         }
 
-        public void Delete(T item)
+        public void Delete(int id)
         {
-            this.dbSet.Remove(item);
+            this.dbSet.Remove(GetById(id));
             this.context.SaveChanges();
         }
     }

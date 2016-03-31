@@ -42,11 +42,11 @@ namespace ITSystem.Services.ModelServices
             }
         }
 
-        public void Delete(T item)
+        public void Delete(int id)
         {
             try
             {
-                baseRepo.Delete(item);
+                baseRepo.Delete(id);
                 this.unitOfWork.Commit();
             }
             catch (Exception)
