@@ -168,23 +168,13 @@ namespace ITSystem.Controllers
 
         public ActionResult Delete(int? id)
         {
-            CandidatesService candidatesService = new CandidatesService();
-            Candidate candidate;
             if (!id.HasValue)
             {
                 return RedirectToAction("List");
             }
-            else
-            {
-                candidate = candidatesService.GetById(id.Value);
-                if (candidate == null)
-                {
-                    return RedirectToAction("List");
-                }
 
-            }
-
-            candidatesService.Delete(candidate);
+            CandidatesService candidatesService = new CandidatesService();
+            candidatesService.Delete(id.Value);
             return RedirectToAction("List");
         }
     }
